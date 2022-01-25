@@ -25,7 +25,6 @@
               <td><?= $sup['alamatSupplier']; ?></td>
               <td><?= $sup['tlpSupplier']; ?></td>
               <td><?= $sup['deskripsi']; ?></td>
-              <td>Tambahin di sini</td>
             </tr>
             <?php endforeach; ?>
           </tbody>
