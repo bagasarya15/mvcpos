@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 02 Mar 2022 pada 19.04
+-- Waktu pembuatan: 03 Mar 2022 pada 14.20
 -- Versi server: 5.7.33
 -- Versi PHP: 7.4.19
 
@@ -169,23 +169,16 @@ INSERT INTO `kategori` (`id_kategori`, `kategori`, `tgl_input`) VALUES
 
 CREATE TABLE `produk` (
   `id_produk` int(11) NOT NULL,
-  `kodeBarang` varchar(100) NOT NULL,
+  `kodeBarang` varchar(255) NOT NULL,
   `id_kategori` int(11) NOT NULL,
-  `namaBarang` text NOT NULL,
-  `hargaBeli` varchar(100) NOT NULL,
-  `hargaJual` varchar(100) NOT NULL,
-  `satuanBarang` varchar(100) NOT NULL,
-  `stok` text NOT NULL,
-  `tgl_input` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `tgl_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `namaBarang` varchar(255) NOT NULL,
+  `hargaBeli` varchar(255) NOT NULL,
+  `hargaJual` varchar(255) NOT NULL,
+  `satuanBarang` varchar(255) NOT NULL,
+  `stok` varchar(255) NOT NULL,
+  `tgl_input` varchar(255) NOT NULL,
+  `tgl_update` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `produk`
---
-
-INSERT INTO `produk` (`id_produk`, `kodeBarang`, `id_kategori`, `namaBarang`, `hargaBeli`, `hargaJual`, `satuanBarang`, `stok`, `tgl_input`, `tgl_update`) VALUES
-(1, 'ABC1508', 1, 'Yakult', '1500', '2500', 'PCS', '10', '2022-03-02 15:46:00', '2022-03-02 15:46:00');
 
 -- --------------------------------------------------------
 
@@ -270,7 +263,8 @@ ALTER TABLE `kategori`
 -- Indeks untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  ADD PRIMARY KEY (`id_produk`);
+  ADD PRIMARY KEY (`id_produk`),
+  ADD KEY `id_kategori` (`id_kategori`);
 
 --
 -- Indeks untuk tabel `role`
@@ -304,7 +298,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk`
