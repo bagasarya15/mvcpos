@@ -93,8 +93,8 @@
           <div class="form-group">
             <label for="id_kategori">Kategori</label>
             <select id="id_kategori" name="id_kategori" class="form-control">
-              <?php foreach($kategori as $kat) ?>
-                <option value="<?php $kat['id_kategori']; ?> <?php $kat['kategori'];?>"></option>
+              <?php foreach ($data['kategori'] as $kat): ?>
+                <option value="<?= $kat['id_kategori']; ?>"><?= $kat['kategori']; ?></option>
               <?php endforeach; ?>
             </select>
           </div>
