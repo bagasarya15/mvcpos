@@ -50,9 +50,9 @@
               <td><?= $sup['deskripsi']; ?></td>
               <td>
                 <!-- Ubah Data -->
-                <a href="<?= BASEURL; ?>/supplier/ubah/<?= $sup['id_supplier']; ?>" class="mb-1 btn btn-success btn-sm tampilModalUbah" data-toggle="modal" data-target="#supModal" data-id_supplier="<?= $sup['id_supplier']; ?>"><i class="fas fa-edit"></i> Ubah </a>
+                <a href="<?= BASEURL; ?>/supplier/ubah/<?= $sup['id_supplier']; ?>" class="mb-1 btn btn-success btn-sm tampilModalUbah" data-toggle="modal" data-target="#supModal" data-id_supplier="<?= $sup['id_supplier']; ?>"> Ubah </a>
                 <!-- Hapus Data -->
-                <a href="<?= BASEURL; ?>/supplier/hapus/<?= $sup['id_supplier']; ?>" class="mb-1 btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini ?');"><i class="fas fa-trash-alt"></i> Hapus </a>
+                <a href="<?= BASEURL; ?>/supplier/hapus/<?= $sup['id_supplier']; ?>" class="mb-1 btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini ?');"> Hapus </a>
               </td>
             </tr>
           <?php endforeach; ?>

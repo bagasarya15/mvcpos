@@ -48,9 +48,9 @@
               <td><?= $cus['tlpCustomer']; ?></td>
               <td>
                 <!-- Ubah Data -->
-                <a href="<?= BASEURL; ?>/customer/ubah/<?= $cus['id_customer']; ?>" class="mb-1 btn btn-success btn-sm modalUbahCustomer" data-toggle="modal" data-target="#cusModal" data-id_customer="<?= $cus['id_customer']; ?>"><i class="fas fa-edit"></i> Ubah </a>
+                <a href="<?= BASEURL; ?>/customer/ubah/<?= $cus['id_customer']; ?>" class="mb-1 btn btn-success btn-sm modalUbahCustomer" data-toggle="modal" data-target="#cusModal" data-id_customer="<?= $cus['id_customer']; ?>"> Ubah </a>
                 <!-- Hapus Data -->
-                <a href="<?= BASEURL; ?>/customer/hapus/<?= $cus['id_customer']; ?>" class="mb-1 btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini ?');"><i class="fas fa-trash-alt"></i> Hapus </a>
+                <a href="<?= BASEURL; ?>/customer/hapus/<?= $cus['id_customer']; ?>" class="mb-1 btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini ?');"> Hapus </a>
               </td>
             </tr>
           <?php endforeach; ?>
