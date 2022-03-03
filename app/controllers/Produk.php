@@ -5,6 +5,7 @@
                 'title' => 'Produk',
             ];
             $data['produk'] = $this->model('produkModel')->getAllProduk();
+            $data['kategori'] = $this->model('kategoriModel')->getAllKategori();  
             $this->view('template/header', $data);
             $this->view('template/sidebar');
             $this->view('template/topbar');

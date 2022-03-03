@@ -33,6 +33,7 @@
           <tr>
             <th scope="col">No</th>
             <th scope="col">Kode Barang</th>
+            <th scope="col">Kategori</th>
             <th scope="col">Nama Barang</th>
             <th scope="col">Harga Beli</th>
             <th scope="col">Harga Jual</th>
@@ -47,6 +48,7 @@
             <tr>
               <th scope="row"><?= $i++; ?></th>
               <td><?= $produk['kodeBarang']; ?></td>
+              <td><?= $produk['id_kategori']; ?></td>
               <td><?= $produk['namaBarang']; ?></td>
               <td><?= $produk['hargaBeli']; ?></td>
               <td><?= $produk['hargaJual']; ?></td>
@@ -74,7 +76,7 @@
 <!-- Modal -->
 <div class="modal fade" id="produkModal" tabindex="-3" aria-labelledby="formModalLabel" aria-hidden="true">
   <div class="modal-dialog d-flex justify-content-center">
-    <div class="modal-content w-100">
+    <div class="modal-content w-75">
       <div class="modal-header">
         <h5 class="modal-title" id="formModalLabel">Tambah Data Produk</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -85,33 +87,33 @@
         <form action="<?= BASEURL; ?>/produk/tambah" method="POST">
           <input type="hidden" name="id_produk" id="id_produk">
           <div class="form-group">
-              <label for="kodeBarang">Kode Barang</label>
-              <input type="text" value="BRG" class="form-control" name="kodeBarang" id="kodeBarang">
+            <label for="kodeBarang">Kode Barang</label>
+            <input type="text" value="BRG" class="form-control" name="kodeBarang" id="kodeBarang">
           </div>
           <div class="form-group">
-              <label for="id_kategori">Kategori</label>
-              <select id="id_kategori" name="id_kategori" class="form-control">
-
-              <!-- Disini gua mau ambil data dari field kategori yang udah di input gmana caranya okisan ? -->
-                <option value="#">-</option>
-                
-              </select>
+            <label for="id_kategori">Kategori</label>
+            <select id="id_kategori" name="id_kategori" class="form-control">
+              <?php foreach($kategori as $kat) ?>
+                <option value="<?php $kat['id_kategori']; ?> <?php $kat['kategori'];?>"></option>
+            </select>
+              <?php endforeach; ?>
           </div>
           <div class="form-group">
               <label for="namaBarang">Nama Barang</label>
-              <input type="text" class="form-control" name="namaBarang" id="namaBarang">
+              <input type="text" class="form-control" name="namaBarang" id="namaBarang" autocomplete="off">
           </div>
           <div class="form-group">
               <label for="hargaBeli">Harga Beli</label>
-              <input type="text" class="form-control" name="hargaBeli" id="hargaBeli">
+              <input type="text" class="form-control" name="hargaBeli" id="hargaBeli" autocomplete="off">
           </div>
           <div class="form-group">
               <label for="hargaJual">Harga Jual</label>
-              <input type="text" class="form-control" name="hargaJual" id="hargaJual">
+              <input type="text" class="form-control" name="hargaJual" id="hargaJual" autocomplete="off">
           </div>
           <div class="form-group">
               <label for="satuanBarang">Satuan Barang</label>
               <select id="satuanBarang" name="satuanBarang" class="form-control">
+                <option value="-">-</option>
                 <option value="PCS">PCS</option>
                 <option value="Liter">Liter</option>
                 <option value="Kg">Kg</option>
@@ -119,13 +121,12 @@
           </div>
           <div class="form-group">
               <label for="stok">Stok Barang</label>
-              <input type="text" class="form-control" name="stok" id="stok">
+              <input type="number" class="form-control" name="stok" id="stok">
           </div>
           <div class="form-group">
             <label for="tgl_input">Tanggal Input</label>
-            <input type="text" readonly="readonly" class="form-control" value="<?=  date("d F Y, h:i A");?>" name="tgl_input" id="tgl_input">
+            <input type="text" readonly="readonly" class="form-control" value="<?=  date("j F Y, G:i");?>" name="tgl_input" id="tgl_input">
           </div>
-          <input type="hidden" name="tgl_update" id="tgl_update">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Tutup</button>

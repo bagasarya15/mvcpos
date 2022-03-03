@@ -21,7 +21,7 @@
         public function tambahDataProduk($data) {  
             $query = "INSERT INTO produk
                             VALUES
-                        (null, :kodeBarang, :namaBarang, :id_kategori, :hargaBeli, :hargaJual, :satuanBarang, :stok, :tgl_input, :tgl_update)";
+                        (null, :kodeBarang, :namaBarang, :id_kategori, :hargaBeli, :hargaJual, :satuanBarang, :stok, :tgl_input)";
 
             $this->db->query($query);
             $this->db->bind('kodeBarang', $data['kodeBarang']);
@@ -32,7 +32,6 @@
             $this->db->bind('satuanBarang', $data['satuanBarang']);
             $this->db->bind('stok', $data['stok']);
             $this->db->bind('tgl_input', $data['tgl_input']);
-            $this->db->bind('tgl_update', $data['tgl_update']);
 
             $this->db->execute();
 
