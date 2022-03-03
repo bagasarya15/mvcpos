@@ -95,8 +95,8 @@
             <select id="id_kategori" name="id_kategori" class="form-control">
               <?php foreach($kategori as $kat) ?>
                 <option value="<?php $kat['id_kategori']; ?> <?php $kat['kategori'];?>"></option>
-            </select>
               <?php endforeach; ?>
+            </select>
           </div>
           <div class="form-group">
               <label for="namaBarang">Nama Barang</label>
