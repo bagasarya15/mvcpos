@@ -30,8 +30,9 @@
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING, 'htmlspecialchars');
 
                 $data = [
-                    'namaProduk' => trim($_POST['namaProduk']),
-                    
+                    'namaBarang' => trim($_POST['namaBarang']),
+                    'hargaBeli' => trim($_POST['hargaBeli']),
+                    'hargaJual' => trim($_POST['hargaJual']),
                 ];
             }
             

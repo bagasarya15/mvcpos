@@ -19,7 +19,7 @@
   
   <!-- Button trigger modal -->
   <div class="d-flex justify-content-end my-2">
-    <button type="button" class="btn btn-primary btn-sm tambahCustomer" data-toggle="modal" data-target="#produkModal">
+    <button type="button" class="btn btn-primary btn-sm tambahProduk" data-toggle="modal" data-target="#produkModal">
       Tambah <?= $data['title']; ?>
     </button>
   </div>
@@ -82,24 +82,50 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="<?= BASEURL; ?>/produk/tambah" method="post">
+        <form action="<?= BASEURL; ?>/produk/tambah" method="POST">
           <input type="hidden" name="id_produk" id="id_produk">
           <div class="form-group">
-            <label for="namaBarang">Nama Barang</label>
-            <input type="text" class="form-control" id="namaBarang" name="namaBarang" autocomplete="off">
-        </div>
-        <div class="form-group">
-            <label for="alamatCustomer">Kategori</label>
-            <input type="text" class="form-control" id="kategori" name="kategori" autocomplete="off">
-        </div>
+              <label for="kodeBarang">Kode Barang</label>
+              <input type="text" value="BRG" class="form-control" name="kodeBarang" id="kodeBarang">
+          </div>
           <div class="form-group">
-            <label for="tlpCustomer">Tlp</label>
-            <input type="number" class="form-control" id="tlpCustomer" name="tlpCustomer" autocomplete="off">
+              <label for="id_kategori">Kategori</label>
+              <select id="id_kategori" name="id_kategori" class="form-control">
+
+              <!-- Disini gua mau ambil data dari field kategori yang udah di input gmana caranya okisan ? -->
+                <option value="#">-</option>
+                
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="namaBarang">Nama Barang</label>
+              <input type="text" class="form-control" name="namaBarang" id="namaBarang">
+          </div>
+          <div class="form-group">
+              <label for="hargaBeli">Harga Beli</label>
+              <input type="text" class="form-control" name="hargaBeli" id="hargaBeli">
+          </div>
+          <div class="form-group">
+              <label for="hargaJual">Harga Jual</label>
+              <input type="text" class="form-control" name="hargaJual" id="hargaJual">
+          </div>
+          <div class="form-group">
+              <label for="satuanBarang">Satuan Barang</label>
+              <select id="satuanBarang" name="satuanBarang" class="form-control">
+                <option value="PCS">PCS</option>
+                <option value="Liter">Liter</option>
+                <option value="Kg">Kg</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="stok">Stok Barang</label>
+              <input type="text" class="form-control" name="stok" id="stok">
           </div>
           <div class="form-group">
             <label for="tgl_input">Tanggal Input</label>
-            <input type="text" required readonly="readonly" class="form-control" value="<?=  date("j F Y, G:i");?>" name="tgl_input">
+            <input type="text" readonly="readonly" class="form-control" value="<?=  date("d F Y, h:i A");?>" name="tgl_input" id="tgl_input">
           </div>
+          <input type="hidden" name="tgl_update" id="tgl_update">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Tutup</button>
