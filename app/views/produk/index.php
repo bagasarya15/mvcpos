@@ -48,7 +48,7 @@
             <tr>
               <th scope="row"><?= $i++; ?></th>
               <td><?= $produk['kodeBarang']; ?></td>
-              <td><?= $produk['id_kategori']; ?></td>
+              <td><?= $produk['kategori']; ?></td>
               <td><?= $produk['namaBarang']; ?></td>
               <td><?= $produk['hargaBeli']; ?></td>
               <td><?= $produk['hargaJual']; ?></td>

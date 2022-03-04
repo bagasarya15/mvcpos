@@ -1,6 +1,7 @@
 <?php 
     class Produk extends Controller {
         public function index() {
+            // var_dump($this->model('produkModel')->getAllProduk()); die;
             $data = [
                 'title' => 'Produk',
             ];
@@ -26,6 +27,7 @@
         }
 
         public function tambah() {
+            // var_dump($_POST); die;
             //Validasi Inputan
             if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING, 'htmlspecialchars');
@@ -37,7 +39,7 @@
                 ];
             }
             
-            if( $this->model('produkModel')-> tambahDataProduk($_POST) > 0 ) {
+            if( $this->model('produkModel')->tambahDataProduk($_POST) > 0 ) {
                 Flasher::setFlash('Produk','Berhasil', 'Ditambahkan', 'success');
                 header('Location:' . BASEURL . '/produk');
                 exit;                
