@@ -48,7 +48,7 @@
             <tr>
               <th scope="row"><?= $i++; ?></th>
               <td><?= $produk['kodeBarang']; ?></td>
-              <td><?= $produk['id_kategori']; ?></td>
+              <td><?= $produk['kategori']; ?></td>
               <td><?= $produk['namaBarang']; ?></td>
               <td><?= $produk['hargaBeli']; ?></td>
               <td><?= $produk['hargaJual']; ?></td>
@@ -93,8 +93,8 @@
           <div class="form-group">
             <label for="id_kategori">Kategori</label>
             <select id="id_kategori" name="id_kategori" class="form-control">
-              <?php foreach($kategori as $kat) ?>
-                <option value="<?php $kat['id_kategori']; ?> <?php $kat['kategori'];?>"></option>
+              <?php foreach ($data['kategori'] as $kat): ?>
+                <option value="<?= $kat['id_kategori']; ?>"><?= $kat['kategori']; ?></option>
               <?php endforeach; ?>
             </select>
           </div>

@@ -8,7 +8,23 @@
         }
 
         public function getAllProduk() {
-            $this->db->query('SELECT * FROM ' . $this->table);
+            // $this->db->query('SELECT * FROM ' . $this->table);
+            $this->db->query('
+                SELECT 
+                    P.id_produk, 
+                    P.kodeBarang, 
+                    K.kategori, 
+                    P.namaBarang, 
+                    P.hargaBeli,
+                    P.hargaJual, 
+                    P.satuanBarang, 
+                    P.stok, 
+                    P.tgl_input
+                FROM produk AS P
+                JOIN kategori AS K
+                ON P.id_kategori = K.id_kategori
+            ');
+
             return $this->db->resultSet();
         }
 
@@ -21,7 +37,7 @@
         public function tambahDataProduk($data) {  
             $query = "INSERT INTO produk
                             VALUES
-                        (null, :kodeBarang, :namaBarang, :id_kategori, :hargaBeli, :hargaJual, :satuanBarang, :stok, :tgl_input)";
+                        (null, :kodeBarang, :id_kategori, :namaBarang, :hargaBeli, :hargaJual, :satuanBarang, :stok, :tgl_input)";
 
             $this->db->query($query);
             $this->db->bind('kodeBarang', $data['kodeBarang']);
