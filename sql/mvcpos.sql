@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 03 Mar 2022 pada 14.20
+-- Waktu pembuatan: 03 Mar 2022 pada 23.37
 -- Versi server: 5.7.33
 -- Versi PHP: 7.4.19
 
@@ -149,7 +149,7 @@ INSERT INTO `customer` (`id_customer`, `namaCustomer`, `alamatCustomer`, `tlpCus
 CREATE TABLE `kategori` (
   `id_kategori` int(11) NOT NULL,
   `kategori` varchar(100) NOT NULL,
-  `tgl_input` varchar(255) NOT NULL
+  `tgl_input` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -158,7 +158,6 @@ CREATE TABLE `kategori` (
 
 INSERT INTO `kategori` (`id_kategori`, `kategori`, `tgl_input`) VALUES
 (11, 'Snack', '2 March 2022, 18:55'),
-(12, 'Makanan', '2 March 2022, 18:59'),
 (13, 'Minuman', '2 March 2022, 18:59');
 
 -- --------------------------------------------------------
@@ -169,16 +168,22 @@ INSERT INTO `kategori` (`id_kategori`, `kategori`, `tgl_input`) VALUES
 
 CREATE TABLE `produk` (
   `id_produk` int(11) NOT NULL,
-  `kodeBarang` varchar(255) NOT NULL,
+  `kodeBarang` varchar(100) NOT NULL,
   `id_kategori` int(11) NOT NULL,
-  `namaBarang` varchar(255) NOT NULL,
-  `hargaBeli` varchar(255) NOT NULL,
-  `hargaJual` varchar(255) NOT NULL,
-  `satuanBarang` varchar(255) NOT NULL,
-  `stok` varchar(255) NOT NULL,
-  `tgl_input` varchar(255) NOT NULL,
-  `tgl_update` varchar(255) NOT NULL
+  `namaBarang` varchar(100) NOT NULL,
+  `hargaBeli` varchar(100) NOT NULL,
+  `hargaJual` varchar(100) NOT NULL,
+  `satuanBarang` varchar(100) NOT NULL,
+  `stok` varchar(100) NOT NULL,
+  `tgl_input` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `produk`
+--
+
+INSERT INTO `produk` (`id_produk`, `kodeBarang`, `id_kategori`, `namaBarang`, `hargaBeli`, `hargaJual`, `satuanBarang`, `stok`, `tgl_input`) VALUES
+(9, 'ABC150', 11, 'Momogi', '1000', '2000', 'PCS', '10', '');
 
 -- --------------------------------------------------------
 
@@ -263,8 +268,7 @@ ALTER TABLE `kategori`
 -- Indeks untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  ADD PRIMARY KEY (`id_produk`),
-  ADD KEY `id_kategori` (`id_kategori`);
+  ADD PRIMARY KEY (`id_produk`);
 
 --
 -- Indeks untuk tabel `role`
@@ -298,13 +302,13 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `role`
