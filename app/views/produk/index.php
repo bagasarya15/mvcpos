@@ -37,8 +37,8 @@
             <th scope="col">Nama Barang</th>
             <th scope="col">Harga Beli</th>
             <th scope="col">Harga Jual</th>
-            <th scope="col">Satuan Barang</th>
             <th scope="col">Stok</th>
+            <th scope="col">Satuan Barang</th>
             <th scope="col">Aksi</th>
           </tr>
         </thead>
@@ -52,8 +52,8 @@
               <td><?= $produk['namaBarang']; ?></td>
               <td><?= $produk['hargaBeli']; ?></td>
               <td><?= $produk['hargaJual']; ?></td>
-              <td><?= $produk['satuanBarang']; ?></td>
               <td><?= $produk['stok']; ?></td>
+              <td><?= $produk['satuanBarang']; ?></td>
               <td>
                 <!--Detail  -->
                 <a href="<?= BASEURL; ?>/produk/detail<?= $produk['id_produk']; ?>" class="mb-1 btn btn-warning btn-sm">Detail</a>
@@ -63,8 +63,28 @@
                 <a href="<?= BASEURL; ?>/produk/hapus/<?= $produk['id_produk']; ?>" class="mb-1 btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini ?');"> Hapus </a>
               </td>
             </tr>
+            <!-- Perhitungan Produk -->
+            <?php 
+              $totalBeli = 0;
+              $totalJual = 0;
+              $totalStok = 0;
+
+              $totalBeli += $produk['harga_beli'] * $produk['stok']; 
+              $totalJual += $produk['harga_jual'] * $produk['stok'];
+              $totalStok += $produk['stok'];
+            ?>
+            <!-- End Perhitungan -->
           <?php endforeach; ?>
         </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="4">Total </td>
+            <th>Rp.<?= number_format($totalBeli);?>,-</td>
+            <th>Rp.<?= number_format($totalJual);?>,-</td>
+            <th><?= $totalStok;?></td>
+            <th colspan="2" style="background:#ddd"></th>
+          </tr>
+        </tfoot>
       </table>
     </div>
   </div>
