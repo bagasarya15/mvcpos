@@ -5,7 +5,7 @@
             $data = [
                 'title' => 'Supplier',
             ];
-            $data['sup'] = $this->model('supplierModel')->getAllSupplier();
+            $data['supplier'] = $this->model('supplierModel')->getAllSupplier();
             $this->view('template/header', $data);
             $this->view('template/sidebar');
             $this->view('template/topbar');
@@ -15,20 +15,20 @@
 
         public function cetakPDF() {
             $data['title'] = 'Supplier';
-            $data['sup'] = $this->model('supplierModel')->getAllSupplier();
+            $data['supplier'] = $this->model('supplierModel')->getAllSupplier();
             $this->view('supplier/cetakPDF');
         }
 
         public function print() {
             $data['title'] = 'Laporan Supplier';
-            $data['sup'] = $this->model('supplierModel')->getAllSupplier();
+            $data['supplier'] = $this->model('supplierModel')->getAllSupplier();
             $this->view('template/header', $data);
             $this->view('supplier/print', $data);
         }
 
         public function detail($id_supplier) {
             $data['title'] = 'Detail Supplier';
-            $data['sup'] = $this->model('supplierModel')->getSupplierById($id_supplier);
+            $data['supplier'] = $this->model('supplierModel')->getSupplierById($id_supplier);
         }
 
         public function tambah() {

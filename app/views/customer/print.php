@@ -17,7 +17,7 @@
         </thead>
         <tbody>
           <?php $i = 1; ?>
-          <?php foreach ($data['cus'] as $cus) : ?>
+          <?php foreach ($data['customer'] as $cus) : ?>
             <tr>
               <th scope="row"><?= $i++; ?></th>
               <td><?= $cus['namaCustomer']; ?></td>

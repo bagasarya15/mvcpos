@@ -41,7 +41,7 @@
         </thead>
         <tbody>
           <?php $i = 1; ?>
-          <?php foreach ($data['sup'] as $sup) : ?>
+          <?php foreach ($data['supplier'] as $sup) : ?>
             <tr>
               <th scope="row"><?= $i++; ?></th>
               <td><?= $sup['namaSupplier']; ?></td>
