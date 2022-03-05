@@ -56,19 +56,15 @@
               <td><?= $produk['satuanBarang']; ?></td>
               <td>
                 <!--Detail  -->
-                <a href="<?= BASEURL; ?>/produk/detail<?= $produk['id_produk']; ?>" class="mb-1 btn btn-warning btn-sm">Detail</a>
+                <a href="<?= BASEURL; ?>/produk/detail/<?= $produk['id_produk']; ?>" class="mb-1 btn btn-warning btn-sm">Detail</a>
                 <!-- Ubah Data -->
-                <a href="<?= BASEURL; ?>/produk/ubah/<?= $produk['id_produk']; ?>" class="mb-1 btn btn-success btn-sm modalUbahProduk" data-toggle="modal" data-target="#produkModal" data-id_produk="<?= $produk['id_produk']; ?>"></i> Ubah </a>
+                <a href="<?= BASEURL; ?>/produk/ubah/<?= $produk['id_produk']; ?>" class="mb-1 btn btn-success btn-sm modalUbahProduk" data-toggle="modal" data-target="#produkModal" data-id_produk="<?= $produk['id_produk']; ?>"> Ubah </a>
                 <!-- Hapus Data -->
                 <a href="<?= BASEURL; ?>/produk/hapus/<?= $produk['id_produk']; ?>" class="mb-1 btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini ?');"> Hapus </a>
               </td>
             </tr>
             <!-- Perhitungan Produk -->
             <?php 
-              $totalBeli = 0;
-              $totalJual = 0;
-              $totalStok = 0;
-
               $totalBeli += $produk['harga_beli'] * $produk['stok']; 
               $totalJual += $produk['harga_jual'] * $produk['stok'];
               $totalStok += $produk['stok'];
@@ -112,7 +108,7 @@
           </div>
           <div class="form-group">
             <label for="id_kategori">Kategori</label>
-            <select id="id_kategori" name="id_kategori" class="form-control">
+            <select id="id_kategori" name="id_kategori" class="form-control" required>
               <?php foreach ($data['kategori'] as $kat): ?>
                 <option value="<?= $kat['id_kategori']; ?>"><?= $kat['kategori']; ?></option>
               <?php endforeach; ?>
@@ -146,6 +142,10 @@
           <div class="form-group">
             <label for="tgl_input">Tanggal Input</label>
             <input type="text" readonly="readonly" class="form-control" value="<?=  date("j F Y, G:i");?>" name="tgl_input" id="tgl_input">
+          </div>
+          <div class="form-group">
+            <label for="tgl_update">Tanggal Update</label>
+            <input type="text" readonly="readonly" class="form-control" value="<?=  date("d F Y, G:i");?>" name="tgl_update" id="tgl_update">
           </div>
       </div>
       <div class="modal-footer">

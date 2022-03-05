@@ -24,6 +24,11 @@
         public function detail($id_produk) {
             $data['title'] = 'Detail Produk';
             $data['produk'] = $this->model('produkModel')->getProdukById($id_produk);
+            $this->view('template/header', $data);
+            $this->view('template/sidebar');
+            $this->view('template/topbar');
+            $this->view('produk/detail', $data);
+            $this->view('template/footer');
         }
 
         public function tambah() {
@@ -73,9 +78,9 @@
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING, 'htmlspecialchars');
                 
                 $data = [
-                    'namaSupplier' => trim($_POST['namaSupplier']),
-                    'alamatSupplier' => trim($_POST['alamatSupplier']),
-                    'tlpSupplier' => trim($_POST['tlpSupplier']),
+                    'namaBarang' => trim($_POST['namaBarang']),
+                    'hargaBeli' => trim($_POST['hargaBeli']),
+                    'hargaJual' => trim($_POST['hargaJual']),
                 ];
             }
             

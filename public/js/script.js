@@ -81,3 +81,37 @@ $(function () {
     });
   });
 });
+
+// JS Modal Ubah Produk
+$(function () {
+  $('.tambahProduk').on('click', function () {
+    $('#formModalLabel').html('Tambah Data Produk');
+    $('.modal-footer button[type=submit]').html('Tambah Data');
+  });
+
+  $('.modalUbahProduk').on('click', function () {
+    $('#formModalLabel').html('Ubah Data Produk');
+    $('.modal-footer button[type=submit]').html('Ubah Data');
+    $('.modal-body form').attr('action', 'http://localhost/mvcpos/public/produk/ubah');
+
+    const id_produk = $(this).data('id_produk');
+    $.ajax({
+      url: 'http://localhost/mvcpos/public/produk/getubah',
+      data: { id_produk: id_produk },
+      method: 'post',
+      dataType: 'json',
+      success: function (data) {
+        $('#kodebarang').val(data.kodeBarang);
+        $('#id_kategori').val(data.id_kategori);
+        $('#namaBarang').val(data.namaBarang);
+        $('#hargaBeli').val(data.hargaBeli);
+        $('#hargaJual').val(data.hargaJual);
+        $('#satuanBarang').val(data.satuanBarang);
+        $('#stok').val(data.stok);
+        $('#tgl_input').val(data.tgl_input);
+        $('#tgl_update');
+        $('#id_produk').val(data.id_produk);
+      },
+    });
+  });
+});
