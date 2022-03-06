@@ -1,16 +1,9 @@
 <?php 
     class produkModel {
-        private $table = 'produk';
+        // private $table = 'produk';
         private $db;
 
-        public function __construct() {
-            $this->db = new Database;
-        }
-        
-        public function getAllProduk() {
-            // $this->db->query('SELECT * FROM ' . $this->table);
-            $this->db->query('
-                SELECT 
+        private $query_join = 'SELECT 
                     P.id_produk, 
                     P.kodeBarang, 
                     K.kategori, 
@@ -19,35 +12,26 @@
                     P.hargaJual, 
                     P.satuanBarang, 
                     P.stok, 
-                    P.tgl_input,
-                    P.tgl_update
+                    P.tgl_input
                 FROM produk AS P
                 JOIN kategori AS K
-                ON P.id_kategori = K.id_kategori
-            ');
+                ON P.id_kategori = K.id_kategori';
+
+        public function __construct() {
+            $this->db = new Database;
+        }
+
+        public function getAllProduk() {
+            // $this->db->query('SELECT * FROM ' . $this->table);
+            $this->db->query($this->query_join);
 
             return $this->db->resultSet();
         }
 
         public function getProdukById($id_produk) {
-            // $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_produk=:id_produk');
-            $this->db->query('
-                SELECT 
-                    P.id_produk, 
-                    P.kodeBarang, 
-                    K.kategori, 
-                    P.namaBarang, 
-                    P.hargaBeli,
-                    P.hargaJual, 
-                    P.satuanBarang, 
-                    P.stok, 
-                    P.tgl_input,
-                    P.tgl_update
-                FROM produk AS P
-                JOIN kategori AS K
-                ON P.id_kategori = K.id_kategori WHERE id_produk=:id_produk   
-            ');
+            $this->db->query($this->query_join.' WHERE P.id_produk=:id_produk');
             $this->db->bind('id_produk', $id_produk);
+
             return $this->db->single();
         }
 

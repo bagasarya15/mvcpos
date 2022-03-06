@@ -13,7 +13,7 @@
 
   <!-- Reports -->
   <div class="d-flex">
-    <a href="<?= BASEURL; ?>/customer/print" target="_blank" class="btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Cetak Data <?= $data['title']; ?></a>
+    <a href="<?= BASEURL; ?>/customer/print" target="_blank" class="btn btn-sm btn-primary shadow-sm"><i class="fa-solid fa-download"></i> Cetak Data <?= $data['title']; ?></a>
   </div>
   <!-- End Reports -->
   

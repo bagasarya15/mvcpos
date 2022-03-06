@@ -13,9 +13,11 @@
 
   <!-- Reports -->
   <div class="d-flex">
-    <a href="<?= BASEURL; ?>/produk/print" target="_blank" class="btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Cetak Data <?= $data['title']; ?></a>
+    <a href="<?= BASEURL; ?>/produk/print" target="_blank" class="btn btn-sm btn-primary shadow-sm"><i class="fa-solid fa-download"></i> Cetak Data <?= $data['title']; ?></a>
+    <!--  Refresh Halaman -->
+    <a href="<?= BASEURL; ?>/produk" class="btn btn-sm btn-success shadow-sm mx-2"><i class="fa-solid fa-rotate"></i> Refresh</a>
   </div>
-  <!-- End Reports -->
+  <!-- End Reports & Refresh Halaman -->
   
   <!-- Button trigger modal -->
   <div class="d-flex justify-content-end my-2">
@@ -50,8 +52,8 @@
               <td><?= $produk['kodeBarang']; ?></td>
               <td><?= $produk['kategori']; ?></td>
               <td><?= $produk['namaBarang']; ?></td>
-              <td><?= $produk['hargaBeli']; ?></td>
-              <td><?= $produk['hargaJual']; ?></td>
+              <td>Rp.<?= number_format($produk['hargaBeli']);?>,-</td>
+              <td>Rp.<?= number_format($produk['hargaJual']);?>,-</td>
               <td><?= $produk['stok']; ?></td>
               <td><?= $produk['satuanBarang']; ?></td>
               <td>
@@ -65,8 +67,8 @@
             </tr>
             <!-- Perhitungan Produk -->
             <?php 
-              $totalBeli += $produk['harga_beli'] * $produk['stok']; 
-              $totalJual += $produk['harga_jual'] * $produk['stok'];
+              $totalBeli += $produk['hargaBeli'] * $produk['stok']; 
+              $totalJual += $produk['hargaJual'] * $produk['stok'];
               $totalStok += $produk['stok'];
             ?>
             <!-- End Perhitungan -->
@@ -74,11 +76,13 @@
         </tbody>
         <tfoot>
           <tr>
-            <th colspan="4">Total </td>
+            <th>#</th>
+            <th>Total</th>
+            <th colspan="2"></th>
             <th>Rp.<?= number_format($totalBeli);?>,-</td>
             <th>Rp.<?= number_format($totalJual);?>,-</td>
             <th><?= $totalStok;?></td>
-            <th colspan="2" style="background:#ddd"></th>
+            <th colspan="2"></th>
           </tr>
         </tfoot>
       </table>
@@ -104,7 +108,7 @@
           <input type="hidden" name="id_produk" id="id_produk">
           <div class="form-group">
             <label for="kodeBarang">Kode Barang</label>
-            <input type="text" class="form-control" name="kodeBarang" id="kodeBarang" value="" required autocomplete="off">
+            <input type="text" class="form-control" name="kodeBarang" id="kodeBarang" autocomplete="off">
           </div>
           <div class="form-group">
             <label for="id_kategori">Kategori</label>
