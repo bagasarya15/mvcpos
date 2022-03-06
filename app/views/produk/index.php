@@ -104,7 +104,7 @@
           <input type="hidden" name="id_produk" id="id_produk">
           <div class="form-group">
             <label for="kodeBarang">Kode Barang</label>
-            <input type="text" value="BRG" class="form-control" name="kodeBarang" id="kodeBarang">
+            <input type="text" class="form-control" name="kodeBarang" id="kodeBarang" value="" required autocomplete="off">
           </div>
           <div class="form-group">
             <label for="id_kategori">Kategori</label>
@@ -141,7 +141,7 @@
           </div>
           <div class="form-group">
             <label for="tgl_input">Tanggal Input</label>
-            <input type="text" readonly="readonly" class="form-control" value="<?=  date("j F Y, G:i");?>" name="tgl_input" id="tgl_input">
+            <input type="text" readonly="readonly" class="form-control" value="<?=  date("d F Y, G:i");?>" name="tgl_input" id="tgl_input">
           </div>
           <div class="form-group">
             <label for="tgl_update">Tanggal Update</label>
