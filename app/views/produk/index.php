@@ -65,8 +65,8 @@
             </tr>
             <!-- Perhitungan Produk -->
             <?php 
-              $totalBeli += $produk['harga_beli'] * $produk['stok']; 
-              $totalJual += $produk['harga_jual'] * $produk['stok'];
+              $totalBeli += $produk['hargaBeli'] * $produk['stok']; 
+              $totalJual += $produk['hargaJual'] * $produk['stok'];
               $totalStok += $produk['stok'];
             ?>
             <!-- End Perhitungan -->
@@ -74,11 +74,12 @@
         </tbody>
         <tfoot>
           <tr>
-            <th colspan="4">Total </td>
+            <th><?= $i; ?></th>
+            <th colspan="3" style="text-align: right">Total </td>
             <th>Rp.<?= number_format($totalBeli);?>,-</td>
             <th>Rp.<?= number_format($totalJual);?>,-</td>
             <th><?= $totalStok;?></td>
-            <th colspan="2" style="background:#ddd"></th>
+            <th colspan="2"></th>
           </tr>
         </tfoot>
       </table>

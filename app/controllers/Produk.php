@@ -4,9 +4,10 @@
             // var_dump($this->model('produkModel')->getAllProduk()); die;
             $data = [
                 'title' => 'Produk',
+                'produk' => $this->model('produkModel')->getAllProduk(),
+                'kategori' => $this->model('kategoriModel')->getAllKategori()
             ];
-            $data['produk'] = $this->model('produkModel')->getAllProduk();
-            $data['kategori'] = $this->model('kategoriModel')->getAllKategori();  
+
             $this->view('template/header', $data);
             $this->view('template/sidebar');
             $this->view('template/topbar');
@@ -22,6 +23,7 @@
         }
 
         public function detail($id_produk) {
+            // var_dump($this->model('produkModel')->getProdukById($id_produk)); die;
             $data['title'] = 'Detail Produk';
             $data['produk'] = $this->model('produkModel')->getProdukById($id_produk);
             $this->view('template/header', $data);

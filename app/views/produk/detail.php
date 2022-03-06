@@ -11,7 +11,7 @@
                 </tr>
                 <tr>
                     <td>Kategori</td>
-                    <td><?= $data['produk']['id_kategori']; ?></td>
+                    <td><?= $data['produk']['kategori']; ?></td>
                 </tr>
                 <tr>
                     <td>Nama Barang</td>
