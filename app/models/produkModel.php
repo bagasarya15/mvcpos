@@ -94,5 +94,13 @@
 
             return $this->db->rowCount();
         }
+
+        public function cariDataProduk() {
+            $keyword = $_POST['keyword'];
+            $query = "SELECT * FROM produk WHERE namaBarang OR kodeBarang LIKE :keyword";
+            $this->db->query($query);
+            $this->db->bind('keyword', "%$keyword%");
+            return $this->db->resultSet();
+        }
     }
 ?>

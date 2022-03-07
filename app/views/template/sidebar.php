@@ -66,11 +66,8 @@
                 </a>
                 <div id="transaksi" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <a class="collapse-item" href="<?= BASEURL; ?>/transaksi">Transaksi Penjualan</a>
+                        <a class="collapse-item" href="<?= BASEURL; ?>/transaksi/riwayatTransaksi">Riwayat Transaksi</a>
                     </div>
                 </div>
             </li>
@@ -83,9 +80,7 @@
                 </a>
                 <div id="laporan" class="collapse" aria-labelledby="laporan" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <a class="collapse-item" href="#">Laporan Penjualan</a>
                     </div>
                 </div>
             </li>
@@ -94,23 +89,19 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
+            
             <div class="sidebar-heading">
                 Setting
             </div>
-
             <!-- Nav Item - Utilities Collapse Menu Setting -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#userEmploye" aria-expanded="true" aria-controls="userEmploye">
                     <i class="fas fa-fw fa-user-cog"></i>
-                    <span>User / Employes </span>
+                    <span>User</span>
                 </a>
                 <div id="userEmploye" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <a class="collapse-item" href="#">Tambah Kasir</a>
                     </div>
                 </div>
             </li>
