@@ -4,6 +4,7 @@
             $data = [
                 'title' => 'Transaksi Penjualan',
                 'produk' => $this->model('produkModel')->getAllProduk(),
+                'customer' => $this->model('customerModel')->getAllCustomer()
                 // 'transaksi' => $this->model('transaksiModel')->getAllTransaksi(),
             ];
            
