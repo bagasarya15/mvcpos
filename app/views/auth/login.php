@@ -51,10 +51,6 @@
             <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
 
             <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" style="background-color: #4a6fdc">Login</button>
-
-            <div class="d-block text-center mt-3">
-              <small>Belum punya akun ? <a href="<?= BASEURL; ?>/auth/register" class="text-decoration-none">Registrasi sekarang</a></small>
-            </div>
         </div>
       </div>
     </form>
