@@ -19,6 +19,9 @@
             $data = [
             'title' => 'Riwayat Transaksi',
             'produk' => $this->model('produkModel')->getAllProduk(),
+            'customer' => $this->model('customerModel')->getAllCustomer()
+            
+            
             // 'riwayatTransaksi'=> $this->model('transaksiModel')->getAllTransaksiById()
             // 'transaksi' => $this->model('transaksiModel')->getAllTransaksi(),
             ];
@@ -34,6 +37,7 @@
             $data = [
                 'title' => 'Transaksi Penjualan',
                 'produk' => $this->model('produkModel')->cariDataProduk(),
+                'customer' => $this->model('customerModel')->getAllCustomer()
             ]; 
             
             $this->view('template/header', $data);

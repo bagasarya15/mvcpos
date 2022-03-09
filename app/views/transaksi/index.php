@@ -12,7 +12,7 @@
         <div class="card-body">
            <form action="<?= BASEURL; ?>/transaksi/cari" method="post">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Masukan : Nama / Kode Barang" name="keyword" id="keyword" aria-describedby="button-addon2" autocomplete="off">
+                    <input type="text" class="form-control" placeholder="Masukan : Nama / Kode Barang" name="cari" id="cari" aria-describedby="button-addon2" autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit" id="tombolCari" autocomplete="off">Cari</button>
                     </div>
@@ -55,8 +55,8 @@
 </div>
 
 <!-- Card Kasir -->
-<div class="row my-5">
-    <div class="card border-primary w-100"> 
+<div class="my-5">
+    <div class="card border-primary" style="width:100%;"> 
         <div class="card-header text-white bg-primary"><i class="fa-solid fa-cart-shopping"></i> Kasir</div>
         <div class="card-body">
             <div class="table-responsive">
@@ -83,19 +83,34 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-            
-        <div class="d-flex">
-            <!-- Input Customer -->
-            <div class="form-group ml-4" style="width: 20%">
-                <label for="id_customer"><b>Customer</b></label>
-                <select id="id_customer" name="id_customer" class="form-control" required>
-                    <?php foreach ($data['customer'] as $cus): ?>
-                        <option value="<?= $cus['id_customer']; ?>"><?= $cus['namaCustomer']; ?></option>
-                    <?php endforeach; ?>
-                </select>
-                <!-- End Input Customer -->
-            </div>
+            <hr></hr>
+            <form action="#" method="POST">
+                <div class="form-row">
+                    <div class="col-sm-6 mb-3">
+                        <label for="id_customer">Customer</label>
+                        <select class="custom-select" id="id_customer" required>
+                            <?php foreach ($data['customer'] as $cus): ?>
+                                <option value="<?= $cus['id_customer']; ?>"><?= $cus['namaCustomer']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <label for="total">Total</label>
+                        <input type="text" class="form-control" id="total" name="total" value="Rp.<?= number_format($total);?>,-" readonly>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-6 mb-3">
+                        <label for="bayar">Bayar</label>
+                        <input type="text" class="form-control" id="bayar" name="bayar" value="<?= $bayar; ?>" required>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <label for="hitung">Kembali</label>
+                        <input type="text" class="form-control" id="hitung" name="hitung" value="<?= $hitung; ?>" required>
+                    </div>
+                </div>
+                <button class="btn btn-sm btn-success float-sm-right" type="submit"><i class="fa-solid fa-cart-shopping"></i> Bayar</button>
+                </form>
         </div>
     </div>
 </div>
@@ -103,4 +118,3 @@
 </div>
 <!-- /.container-fluid -->
 </div>
-<!-- End of Main Content -->

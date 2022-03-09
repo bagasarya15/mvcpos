@@ -96,10 +96,10 @@
         }
 
         public function cariDataProduk() {
-            $keyword = $_POST['keyword'];
-            $query = "SELECT * FROM produk WHERE namaBarang OR kodeBarang LIKE :keyword";
+            $cari = $_POST['cari'];
+            $query = "SELECT * FROM produk WHERE kodeBarang OR namaBarang LIKE :cari";
             $this->db->query($query);
-            $this->db->bind('keyword', "%$keyword%");
+            $this->db->bind('cari', "%$cari%");
             return $this->db->resultSet();
         }
     }

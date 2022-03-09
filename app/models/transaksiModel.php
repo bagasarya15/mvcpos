@@ -1,5 +1,5 @@
 <?php 
-    class usersModel {
+    class transaksiModel {
         // private $table = 'transaksi';
         private $db;
 
