@@ -4,7 +4,8 @@
             $data = [
                 'title' => 'Transaksi Penjualan',
                 'produk' => $this->model('produkModel')->getAllProduk(),
-                'customer' => $this->model('customerModel')->getAllCustomer()
+                'customer' => $this->model('customerModel')->getAllCustomer(),
+                'keranjang' => $this->model('transaksiModel')->getAllTransaksi(),
                 // 'transaksi' => $this->model('transaksiModel')->getAllTransaksi(),
             ];
            
@@ -19,11 +20,7 @@
             $data = [
             'title' => 'Riwayat Transaksi',
             'produk' => $this->model('produkModel')->getAllProduk(),
-            'customer' => $this->model('customerModel')->getAllCustomer()
-            
-            
-            // 'riwayatTransaksi'=> $this->model('transaksiModel')->getAllTransaksiById()
-            // 'transaksi' => $this->model('transaksiModel')->getAllTransaksi(),
+            'customer' => $this->model('customerModel')->getAllCustomer(),
             ];
            
             $this->view('template/header', $data);
@@ -37,7 +34,8 @@
             $data = [
                 'title' => 'Transaksi Penjualan',
                 'produk' => $this->model('produkModel')->cariDataProduk(),
-                'customer' => $this->model('customerModel')->getAllCustomer()
+                'customer' => $this->model('customerModel')->getAllCustomer(),
+                'keranjang' => $this->model('transaksiModel')->getAllTransaksi(),
             ]; 
             
             $this->view('template/header', $data);
@@ -45,6 +43,18 @@
             $this->view('template/topbar');
             $this->view('transaksi/index', $data);
             $this->view('template/footer');
+        }
+
+        public function tambah() {
+            if( $this->model('transaksiModel')->tambahKeranjang($_POST) > 0 ) {
+                Flasher::setFlash('Barang','Berhasil', 'Ditambahkan', 'success');
+                header('Location:' . BASEURL . '/transaksi');
+                exit;                
+            } else {
+                Flasher::setFlash('Barang','Gagal', 'Ditambahkan', 'danger');
+                header('Location:' . BASEURL . '/transaksi');
+                exit;        
+            }
         }
     }
 ?>

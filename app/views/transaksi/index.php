@@ -43,7 +43,7 @@
                             <td><?= $produk['kodeBarang']; ?></td>
                             <td><?= $produk['namaBarang']; ?></td>
                             <td><?= $produk['hargaJual']; ?></td>
-                            <td><a href="#" class="btn btn-sm btn-success"><i class="fa-solid fa-cart-shopping"></i></a></td>
+                            <td><a href="<?= BASEURL; ?>/transaksi/tambahKeranjang" class="btn btn-sm btn-success"><i class="fa-solid fa-cart-shopping"></i></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -60,11 +60,10 @@
         <div class="card-header text-white bg-primary"><i class="fa-solid fa-cart-shopping"></i> Kasir</div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped" width="100%">
+                <table class="table table-striped text-center" width="100%" id="tablePos">
                     <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Nama Customer</th>
                         <th scope="col">Nama Barang</th>
                         <th scope="col">Jumlah</th>
                         <th scope="col">Total</th>
@@ -73,18 +72,30 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <?php $no = 1; ?>
+                        <?php foreach ($data['keranjang'] as $keranjang) : ?>
+                        <tr>
+                        <form action="<?= BASEURL; ?>/transaksi/ubahKeranjang" method="POST">
+                            
+                            <input type="hidden" name="id_transaksi" value="<?= $keranjang['id_transaksi'];?>" class="form-control">
+                            <input type="hidden" name="id_produk" value="<?= $keranjang['id_produk'];?>" class="form-control">
+                            
+                            <td><?= $no++; ?></td>
+                            <td><?= $keranjang['namaBarang'];  ?></td>
+                            <td><input type="number" class="form-control" name="jumlah" value="<?= $keranjang['jumlah'];?>"></td>
+                            <td>Rp.<?= number_format($keranjang['total']);?>,-</td>
+                            <td><?= $_SESSION['username']; ?></td>
+                            <td>
+                                <button type="submit" class="btn btn-sm btn-warning">Update</button>
+                            </td>
+                        </form>
+                        </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
             <hr></hr>
-            <form action="#" method="POST">
+            <form action="<?= BASEURL; ?>/transaksi/penjualan" method="POST">
                 <div class="form-row">
                     <div class="col-sm-6 mb-3">
                         <label for="id_customer">Customer</label>
@@ -95,7 +106,7 @@
                         </select>
                     </div>
                     <div class="col-sm-6 mb-3">
-                        <label for="total">Total</label>
+                        <label for="total">Total Semua</label>
                         <input type="text" class="form-control" id="total" name="total" value="Rp.<?= number_format($total);?>,-" readonly>
                     </div>
                 </div>
@@ -106,7 +117,7 @@
                     </div>
                     <div class="col-sm-6 mb-3">
                         <label for="hitung">Kembali</label>
-                        <input type="text" class="form-control" id="hitung" name="hitung" value="<?= $hitung; ?>" required>
+                        <input type="text" class="form-control" id="hitung" name="hitung" value="<?= $hitung; ?>">
                     </div>
                 </div>
                 <button class="btn btn-sm btn-success float-sm-right" type="submit"><i class="fa-solid fa-cart-shopping"></i> Bayar</button>

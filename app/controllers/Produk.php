@@ -1,10 +1,9 @@
 <?php 
     class Produk extends Controller {
         public function index() {
-            // var_dump($this->model('produkModel')->getAllProduk()); die;
             $data = [
                 'title' => 'Produk',
-                'produk' => $this->model('produkModel')->getAllProduk(),
+                'produk' => $this->model('produkModel')->getJoinProduk(),
                 'kategori' => $this->model('kategoriModel')->getAllKategori()
             ];
 
@@ -23,7 +22,6 @@
         }
 
         public function detail($id_produk) {
-            // var_dump($this->model('produkModel')->getProdukById($id_produk)); die;
             $data['title'] = 'Detail Produk';
             $data['produk'] = $this->model('produkModel')->getProdukById($id_produk);
             $this->view('template/header', $data);
@@ -34,7 +32,6 @@
         }
 
         public function tambah() {
-            // var_dump($_POST); die;
             //Validasi Inputan
             if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING, 'htmlspecialchars');
