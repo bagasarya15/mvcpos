@@ -10,21 +10,29 @@
     <div class="card border-primary" style="width:100%;">
         <div class="card-header text-white bg-primary"><i class="fa-solid fa-magnifying-glass"></i> Cari Barang</div>
         <div class="card-body">
-           <form action="<?= BASEURL; ?>/transaksi/cari" method="post">
+            <div class="form-group">
+                <select class="form-control" name="selectBarang">
+                <option class="disable">Pilih barang</option>
+                <?php foreach ($data['produk'] as $produk) : ?>
+                    <option value="<?= $produk['id_produk']; ?>"><?= $produk['namaBarang']; ?> - <?= $produk['hargaJual']; ?></option>
+                <?php endforeach; ?>
+                </select>
+            </div>
+           <!-- <form action="<?= BASEURL; ?>/transaksi/cari" method="post">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Masukan : Nama / Kode Barang" name="cari" id="cari" aria-describedby="button-addon2" autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit" id="tombolCari" autocomplete="off">Cari</button>
                     </div>
                 </div>
-            </form>
+            </form> -->
         </div>
     </div>
   </div>
   <!-- End Card Pencarian  -->
 
   <!-- Card Hasil Pencarian -->
-  <div class="col-lg-8 my-1">
+  <!-- <div class="col-lg-8 my-1">
     <div class="card border-primary" style="width:100%;">
         <div class="card-header text-white bg-primary"><i class="fa-solid fa-list"></i> Hasil Pencarian</div>   
         <div class="table-responsive">
@@ -50,7 +58,7 @@
             </table>
         </div>
     </div>
-  </div>
+  </div> -->
   <!-- End Card Hasil Pencarian -->
 </div>
 

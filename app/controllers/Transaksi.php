@@ -45,7 +45,7 @@
             $this->view('template/footer');
         }
 
-        public function tambah() {
+        public function tambahKeranjang() {
             if( $this->model('transaksiModel')->tambahKeranjang($_POST) > 0 ) {
                 Flasher::setFlash('Barang','Berhasil', 'Ditambahkan', 'success');
                 header('Location:' . BASEURL . '/transaksi');

@@ -25,6 +25,25 @@ $(function () {
       },
     });
   });
+
+  $('select[name=selectBarang]').change(function () {
+    let data = $(this).find(':selected').val();
+
+    $.ajax({
+      type: 'POST',
+      url: 'fungsi/edit/edit.php?cari_barang=yes',
+      data: 'keyword=' + $(this).val(),
+      beforeSend: function () {
+        $('#hasil_cari').hide();
+        $('#tunggu').html('<p style="color:green"><blink>tunggu sebentar</blink></p>');
+      },
+      success: function (html) {
+        $('#tunggu').html('');
+        $('#hasil_cari').show();
+        $('#hasil_cari').html(html);
+      },
+    });
+  });
 });
 
 // JS Modal Ubah Customer
