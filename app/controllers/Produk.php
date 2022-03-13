@@ -1,5 +1,12 @@
 <?php 
     class Produk extends Controller {
+
+        public function __construct() {
+            if($_SESSION['role'] !== 'admin') {
+                header('Location:' . BASEURL . '/transaksi');
+            }  
+        }
+
         public function index() {
             $data = [
                 'title' => 'Produk',
@@ -15,15 +22,19 @@
         }
 
         public function print() {
-            $data['title'] = 'Laporan Data Produk';
-            $data['produk'] = $this->model('produkModel')->getAllProduk();
+            $data = [
+                'title' => 'Laporan Data Produk',
+                'produk' => $this->model('produkModel')->getAllProduk(),
+            ];
             $this->view('template/header', $data);
             $this->view('produk/print', $data);
         }
 
         public function detail($id_produk) {
-            $data['title'] = 'Detail Produk';
-            $data['produk'] = $this->model('produkModel')->getProdukById($id_produk);
+            $data = [
+                'title' => 'Detail Produk',
+                'produk' => $this->model('produkModel')->getProdukById($id_produk),
+            ];
             $this->view('template/header', $data);
             $this->view('template/sidebar');
             $this->view('template/topbar');

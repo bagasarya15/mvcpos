@@ -19,7 +19,7 @@
           $row = mysqli_fetch_assoc($result);
           $_SESSION['username'] = $row['username'];
           $_SESSION['role'] = $row['role'];
-          header('Location:' . BASEURL . '/transaksi');
+          header('Location:' . BASEURL . '/home');
     } else {
           echo "<script>alert('Username atau Password Salah. Silahkan Coba Lagi !')</script>";
     }

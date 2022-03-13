@@ -6,7 +6,6 @@
                 'produk' => $this->model('produkModel')->getAllProduk(),
                 'customer' => $this->model('customerModel')->getAllCustomer(),
                 'keranjang' => $this->model('transaksiModel')->getAllTransaksi(),
-                // 'transaksi' => $this->model('transaksiModel')->getAllTransaksi(),
             ];
            
             $this->view('template/header', $data);

@@ -1,6 +1,11 @@
 <?php 
 
     class Home extends Controller {
+        public function __construct() {
+            if($_SESSION['role'] !== 'admin') {
+                header('Location:' . BASEURL . '/transaksi');
+            }  
+        }
 
         public function index() {
             $data =[

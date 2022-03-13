@@ -1,11 +1,17 @@
 <?php 
     class Kategori extends Controller{
 
+        public function __construct() {
+            if($_SESSION['role'] !== 'admin') {
+                header('Location:' . BASEURL . '/transaksi');
+            }  
+        }
+
         public function index() {
             $data = [
-                'title' => 'Kategori'
+                'title' => 'Kategori',
+                'kategori' => $this->model('kategoriModel')->getAllKategori(),
             ];
-            $data['kategori'] = $this->model('kategoriModel')->getAllKategori();
             $this->view('template/header', $data);
             $this->view('template/sidebar');
             $this->view('template/topbar');
@@ -19,8 +25,7 @@
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING, 'htmlspecialchars');
 
                 $data = [
-                    'kategori' => trim($_POST['kategori']),
-                    
+                    'kategori' => trim($_POST['kategori']),  
                 ];
             }
             

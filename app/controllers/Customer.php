@@ -1,9 +1,18 @@
 <?php 
 
     class Customer extends Controller {
+        
+        public function __construct() {
+            if($_SESSION['role'] !== 'admin') {
+                header('Location:' . BASEURL . '/transaksi');
+            }  
+        }
+
         public function index() {
-            $data['title'] = 'Customer';
-            $data['customer'] = $this->model('customerModel')->getAllCustomer();
+            $data= [
+                'title' => 'Customer',
+                'customer' => $this->model('customerModel')->getAllCustomer(),
+            ];
             $this->view('template/header', $data);
             $this->view('template/sidebar');
             $this->view('template/topbar');
@@ -12,13 +21,17 @@
         }
 
         public function detail($id_customer) {
-            $data['title'] = 'Detail Customer';
-            $data['customer'] = $this->model('customerModel')->getCustomerById($id_customer);
+            $data = [
+                'title' => 'Detail Customer',
+                'customer' => $this->model('customerModel')->getCustomerById($id_customer),
+            ];
         }
 
         public function print() {
-            $data['title'] = 'Data Customer';
-            $data['customer'] = $this->model('customerModel')->getAllCustomer();
+            $data = [
+                'title' => 'Data Customer',
+                'customer' => $this->model('customerModel')->getAllCustomer(),
+            ];
             $this->view('template/header', $data);
             $this->view('template/topbar');
             $this->view('customer/print', $data);

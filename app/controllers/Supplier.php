@@ -1,34 +1,49 @@
 <?php 
 
     class Supplier extends Controller {
+
+        public function __construct() {
+            if($_SESSION['role'] !== 'admin') {
+                header('Location:' . BASEURL . '/transaksi');
+            }  
+        }
+
         public function index() {
             $data = [
                 'title' => 'Supplier',
+                'supplier' => $this->model('supplierModel')->getAllSupplier(),
             ];
-            $data['supplier'] = $this->model('supplierModel')->getAllSupplier();
+
             $this->view('template/header', $data);
             $this->view('template/sidebar');
             $this->view('template/topbar');
             $this->view('supplier/index', $data);
             $this->view('template/footer');
+
         }
 
         public function cetakPDF() {
-            $data['title'] = 'Supplier';
-            $data['supplier'] = $this->model('supplierModel')->getAllSupplier();
+            $data = [
+                'title' => 'Supplier',
+                'supplier' => $this->model('supplierModel')->getAllSupplier(),
+            ];
             $this->view('supplier/cetakPDF');
         }
 
         public function print() {
-            $data['title'] = 'Laporan Supplier';
-            $data['supplier'] = $this->model('supplierModel')->getAllSupplier();
+            $data = [
+                'title' => 'Laporan Supplier',
+                'supplier' => $this->model('supplierModel')->getAllSupplier(),
+            ];
             $this->view('template/header', $data);
             $this->view('supplier/print', $data);
         }
 
         public function detail($id_supplier) {
-            $data['title'] = 'Detail Supplier';
-            $data['supplier'] = $this->model('supplierModel')->getSupplierById($id_supplier);
+            $data = [
+                'title' => 'Detail Supplier',
+                'supplier' => $this->model('supplierModel')->getSupplierById($id_supplier),
+            ];
         }
 
         public function tambah() {
