@@ -36,6 +36,14 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800"><?= $data['title'] ?> </h1>
 
+  <!-- Alert -->
+  <div class="row">
+    <div class="col-lg-6">
+      <?php Flasher::flash() ?>
+    </div>
+  </div>
+  <!-- End Alert -->
+
   <!-- Refresh Halaman -->
   <div class="d-flex">
     <a href="<?= BASEURL; ?>/auth/kasir" class="btn btn-sm btn-success shadow-sm"><i class="fa-solid fa-rotate"></i> Refresh</a>
@@ -72,7 +80,7 @@
                 <!-- Ubah Data -->
 
                 <!-- Hapus Data -->
-                <a href="<?= BASEURL; ?>/auth/hapus/<?= $users['id_supplier']; ?>" class="mb-1 btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini ?');"> Hapus </a>
+                <a href="<?= BASEURL; ?>/auth/hapus/<?= $users['id_user']; ?>" class="mb-1 btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini ?');"> Hapus </a>
               </td>
             </tr>
           <?php endforeach; ?>

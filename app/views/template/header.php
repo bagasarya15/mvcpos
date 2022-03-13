@@ -24,7 +24,7 @@
     <link href="<?= BASEURL; ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="<?= BASEURL; ?>/vendor/datatables/buttons/2.2.2/css/buttons.bootstrap4.min.css" rel="stylesheet">
 
-    <style>
+    <!-- <style>
         @keyframes roll {
             0% {
                 transform: rotate(0);
@@ -37,7 +37,7 @@
         .sidebar-brand-icon {
             animation: roll infinite 5s;
         }
-    </style>
+    </style> -->
 
 </head>
 <body id="page-top">

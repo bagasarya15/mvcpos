@@ -11,7 +11,8 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">SR - POS</div>
             </a>
-
+<!-- Akses Jika Role Admin  -->
+      	<?php if ($_SESSION['role'] == 'admin') {?>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -106,6 +107,30 @@
                 </div>
             </li>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+<!-- End Akses Admin -->
+        <?php }else { ?>
+        <!-- Jika Akses Login User  -->            
+            <hr class="sidebar-divider my-0">
+             <!-- Nav Item - Utilities Collapse Transaksi -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#transaksi" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Transaksi</span>
+                </a>
+                <div id="transaksi" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= BASEURL; ?>/transaksi">Transaksi Penjualan</a>
+                        <a class="collapse-item" href="<?= BASEURL; ?>/transaksi/riwayatTransaksi">Riwayat Transaksi</a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -114,6 +139,7 @@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-
+        <?php } ?>    
+    <!-- End Akses User -->
         </ul>
         <!-- End of Sidebar -->
