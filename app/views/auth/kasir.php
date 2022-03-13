@@ -46,7 +46,7 @@
 
   <!-- Refresh Halaman -->
   <div class="d-flex">
-    <a href="<?= BASEURL; ?>/user" class="btn btn-sm btn-success shadow-sm"><i class="fa-solid fa-rotate"></i> Refresh</a>
+    <a href="<?= BASEURL; ?>/auth/kasir" class="btn btn-sm btn-success shadow-sm"><i class="fa-solid fa-rotate"></i> Refresh</a>
   </div>
   <!--Refresh Halaman -->
   
@@ -66,9 +66,7 @@
         <thead>
           <tr>
             <th scope="col">No</th>
-            <th scope="col">Username</th>
-            <th scope="col">Hak Akses</th>
-            <th scope="col">Nama</th>
+            <th scope="col">Nama Users</th>
             <th scope="col">Aksi</th>
           </tr>
         </thead>
@@ -78,13 +76,11 @@
             <tr>
               <th scope="row"><?= $i++; ?></th>
               <td><?= $users['username']; ?></td>
-              <td><?= $users['role']; ?></td>
-              <td><?= $users['name']; ?></td>
               <td>
                 <!-- Ubah Data -->
 
                 <!-- Hapus Data -->
-                <a href="<?= BASEURL; ?>/user/hapus/<?= $users['id_user']; ?>" class="mb-1 btn btn-danger btn-sm disabled" onclick="return confirm('Yakin ingin menghapus data ini ?');"> Hapus </a>
+                <a href="<?= BASEURL; ?>/auth/hapus/<?= $users['id_user']; ?>" class="mb-1 btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini ?');"> Hapus </a>
               </td>
             </tr>
           <?php endforeach; ?>

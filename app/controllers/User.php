@@ -7,7 +7,7 @@
                 'users' => $this->model('usersModel')->getAllUsers(),
             ];
             $this->view('template/header', $data);
-            $this->view('template/sidebar');
+            $this->view('template/sidebar',$data);
             $this->view('template/topbar');
             $this->view('user/index', $data);
             $this->view('template/footer');

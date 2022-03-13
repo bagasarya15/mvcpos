@@ -24,7 +24,7 @@
         public function print() {
             $data = [
                 'title' => 'Laporan Data Produk',
-                'produk' => $this->model('produkModel')->getAllProduk(),
+                'produk' => $this->model('produkModel')->getAllProduk()
             ];
             $this->view('template/header', $data);
             $this->view('produk/print', $data);

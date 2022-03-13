@@ -17,7 +17,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item <?= $title === 'home' ? 'active' : '' ?>">
+            <li class="nav-item <?= $data['title'] === 'Home' ? 'active' : '' ?>">
                 <a class="nav-link" href="<?= BASEURL; ?>/home">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -32,14 +32,14 @@
             </div>
 
             <!-- Nav Item - Supplier -->
-            <li class="nav-item">
+            <li class="nav-item <?= $data['title'] === 'Supplier' ? 'active' : '' ?>">
                 <a class="nav-link" href="<?= BASEURL; ?>/supplier">
                     <i class="fas fa-truck"></i>
                     <span>Supplier</span></a>
             </li>
 
             <!-- Nav Item - Customer -->
-            <li class="nav-item">
+            <li class="nav-item <?= $data['title'] === 'Customer' ? 'active' : '' ?>">
                 <a class="nav-link" href="<?= BASEURL; ?>/customer">
                     <i class="fas fa-users"></i>
                     <span>Customer</span></a>
@@ -89,22 +89,15 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            
+            <!-- Heading Setting-->
             <div class="sidebar-heading">
                 Setting
             </div>
-            <!-- Nav Item - Utilities Collapse Menu Setting -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#userEmploye" aria-expanded="true" aria-controls="userEmploye">
-                    <i class="fas fa-fw fa-user-cog"></i>
-                    <span>User</span>
-                </a>
-                <div id="userEmploye" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= BASEURL; ?>/user">Kasir</a>
-                    </div>
-                </div>
+            <!-- Nav Item User -->
+            <li class="nav-item <?= $data['title'] === 'User' ? 'active' : '' ?>">
+                <a class="nav-link" href="<?= BASEURL; ?>/user">
+                    <i class="fas fa-users"></i>
+                    <span>User</span></a>
             </li>
 
             <!-- Divider -->

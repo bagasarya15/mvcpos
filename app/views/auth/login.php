@@ -4,7 +4,7 @@
   error_reporting(0);
   session_start();
    
-  if (isset($_SESSION['username']) && isset($_SESSION['id']) ) {
+  if (isset($_SESSION['username']) && isset($_SESSION['id_user']) && isset($_SESSION['name']) ) {
       header('Location:' . BASEURL . '/auth/login');
   }
    
@@ -12,6 +12,7 @@
     $username = $_POST['username'];
     $password = md5($_POST['password']);
     $role = $_POST['role'];
+    $name = $_POST['name'];
     $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' AND role = '$role'";
     $result = mysqli_query($conn, $sql);
 
@@ -19,6 +20,7 @@
           $row = mysqli_fetch_assoc($result);
           $_SESSION['username'] = $row['username'];
           $_SESSION['role'] = $row['role'];
+          $_SESSION['name'] = $row['name'];
           header('Location:' . BASEURL . '/home');
     } else {
           echo "<script>alert('Username atau Password Salah. Silahkan Coba Lagi !')</script>";

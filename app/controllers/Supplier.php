@@ -15,7 +15,7 @@
             ];
 
             $this->view('template/header', $data);
-            $this->view('template/sidebar');
+            $this->view('template/sidebar', $data);
             $this->view('template/topbar');
             $this->view('supplier/index', $data);
             $this->view('template/footer');
