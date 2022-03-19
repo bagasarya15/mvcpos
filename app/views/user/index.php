@@ -1,9 +1,11 @@
 <?php
   include '../app/config/configLog.php';
-  include '../app/helpers/session_helper.php';
+  // include '../app/helpers/session_helper.php';
 
   if (isset($_POST['submit'])) {
       $username = $_POST['username'];
+      $name = $_POST['name'];
+      $role = $_POST['role'];
       $password = md5($_POST['password']);
       $cpassword = md5($_POST['cpassword']);
   
@@ -11,22 +13,24 @@
           $sql = "SELECT * FROM users WHERE username='$username'";
           $result = mysqli_query($conn, $sql);
           if (!$result->num_rows > 0) {
-              $sql = "INSERT INTO users (username, password)
-                      VALUES ('$username','$password')";
+              $sql = "INSERT INTO users (username, name, role, password)
+                      VALUES ('$username', '$name', '$role' ,'$password')";
               $result = mysqli_query($conn, $sql);
               if ($result) {
-                  echo "<script>alert('User Berhasil Ditambah !')</script>";
+                  Flasher::setFlash('Users','Berhasil', 'Ditambahkan', 'success');
                   $username = '';
+                  $name = 'aa';
+                  $role = '';
                   $_POST['password'] = '';
                   $_POST['cpassword'] = '';
               } else {
-                  echo "<script>alert('Terjadi Kesalahan.')</script>";
+                  Flasher::setFlash('Users','Gagal', 'Ditambah', 'danger');
               }
           } else {
-              echo "<script>alert('Username Sudah Terdaftar.')</script>";
+              Flasher::setFlash('Username','Sudah', 'Terdaftar', 'warning');
           }
       } else {
-          echo "<script>alert('Password Tidak Sesuai')</script>";
+          Flasher::setFlash('Password','Tidak', 'Sesuai', 'danger');
       }
   }
 ?>
@@ -67,8 +71,8 @@
           <tr>
             <th scope="col">No</th>
             <th scope="col">Username</th>
-            <th scope="col">Hak Akses</th>
             <th scope="col">Nama</th>
+            <th scope="col">Hak Akses</th>
             <th scope="col">Aksi</th>
           </tr>
         </thead>
@@ -78,13 +82,13 @@
             <tr>
               <th scope="row"><?= $i++; ?></th>
               <td><?= $users['username']; ?></td>
-              <td><?= $users['role']; ?></td>
               <td><?= $users['name']; ?></td>
+              <td><?= $users['role']; ?></td>
               <td>
                 <!-- Ubah Data -->
-
+              <a href="#" class="btn btn-sm btn-warning">Ubah</a>
                 <!-- Hapus Data -->
-                <a href="<?= BASEURL; ?>/user/hapus/<?= $users['id_user']; ?>" class="mb-1 btn btn-danger btn-sm disabled" onclick="return confirm('Yakin ingin menghapus data ini ?');"> Hapus </a>
+                <a href="<?= BASEURL; ?>/user/hapus/<?= $users['id_user']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini ?');"> Hapus </a>
               </td>
             </tr>
           <?php endforeach; ?>
@@ -108,10 +112,22 @@
       </div>
       <div class="modal-body">
         <form action="" method="POST">
-          <input type="hidden" name="id_user" id="id_user">
+          <!-- <input type="hidden" name="id_user" id="id_user"> -->
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" autocomplete="off">
+            <input type="text" class="form-control" id="username" name="username" autocomplete="off" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" autocomplete="off" value="<?= $name; ?>" required>
+          </div>
+          <div class="form-group">
+            <label for="role">Role</label>
+            <select class="form-control mb-3" name="role" id="role" aria-label="Default select example">
+              <option selected value="user">-</option>
+              <option value="user">user</option>
+              <option value="admin">admin</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="password">Password</label>

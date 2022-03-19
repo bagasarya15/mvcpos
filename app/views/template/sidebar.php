@@ -110,19 +110,22 @@
 <!-- End Akses Admin -->
         <?php }else { ?>
         <!-- Jika Akses Login User  -->            
-            <hr class="sidebar-divider my-0">
-             <!-- Nav Item - Utilities Collapse Transaksi -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#transaksi" aria-expanded="true" aria-controls="collapseUtilities">
+            <hr class="sidebar-divider mt-1">
+            <!--List Transaksi Penjualan -->
+            <div class="sidebar-heading">
+                Penjualan
+            </div>
+            
+            <li class="nav-item <?= $data['title'] === 'Transaksi Penjualan' ? 'active' : '' ?>">
+                <a class="nav-link" href="<?= BASEURL; ?>/transaksi">
                     <i class="fas fa-shopping-cart"></i>
-                    <span>Transaksi</span>
-                </a>
-                <div id="transaksi" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= BASEURL; ?>/transaksi">Transaksi Penjualan</a>
-                        <a class="collapse-item" href="<?= BASEURL; ?>/transaksi/riwayatTransaksi">Riwayat Transaksi</a>
-                    </div>
-                </div>
+                    <span>Transaksi Penjualan</span></a>
+            </li>
+
+            <li class="nav-item <?= $data['title'] === 'Riwayat Transaksi' ? 'active' : '' ?>">
+                <a class="nav-link" href="<?= BASEURL; ?>/transaksi/riwayatTransaksi">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Riwayat Transaksi</span></a>
             </li>
 
             <!-- Divider -->
@@ -135,4 +138,4 @@
         <?php } ?>    
     <!-- End Akses User -->
         </ul>
-        <!-- End of Sidebar -->
+<!-- End of Sidebar -->

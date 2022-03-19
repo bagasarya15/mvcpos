@@ -4,7 +4,7 @@
   error_reporting(0);
   session_start();
    
-  if (isset($_SESSION['username']) && isset($_SESSION['id_user']) && isset($_SESSION['name']) ) {
+  if (isset($_SESSION['username']) && isset($_SESSION['id_user']) && isset($_SESSION['name']) && isset($_SESSION['role']) ) {
       header('Location:' . BASEURL . '/auth/login');
   }
    
@@ -23,7 +23,9 @@
           $_SESSION['name'] = $row['name'];
           header('Location:' . BASEURL . '/home');
     } else {
-          echo "<script>alert('Username atau Password Salah. Silahkan Coba Lagi !')</script>";
+          echo "<script>
+                   alert('Username atau Password Salah. Silahkan Coba Lagi !')
+                </script>";
     }
   }
 ?>

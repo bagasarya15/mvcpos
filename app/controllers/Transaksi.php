@@ -9,7 +9,7 @@
             ];
            
             $this->view('template/header', $data);
-            $this->view('template/sidebar');
+            $this->view('template/sidebar', $data);
             $this->view('template/topbar');
             $this->view('transaksi/index', $data);
             $this->view('template/footer');
@@ -23,7 +23,7 @@
             ];
            
             $this->view('template/header', $data);
-            $this->view('template/sidebar');
+            $this->view('template/sidebar', $data);
             $this->view('template/topbar');
             $this->view('transaksi/riwayatTransaksi', $data);
             $this->view('template/footer');

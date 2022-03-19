@@ -15,10 +15,12 @@
         public function tambahDataUser($data) {  
             $query = "INSERT INTO users
                             VALUES
-                        (null, :username, :password)";
+                        (null, :username, :name, :role, :password)";
 
             $this->db->query($query);
             $this->db->bind('username', $data['username']);
+            $this->db->bind('name', $data['name']);
+            $this->db->bind('role', $data['role']);
             $this->db->bind('password', $data['password']);
             
             $this->db->execute();
