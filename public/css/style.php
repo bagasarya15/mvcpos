@@ -7,7 +7,7 @@
 <!-- CSS Embeded -->
 <style>
     body {
-        background-color: #4a6fdc;
+        background-color: #191E3A;
       }
 </style>
 

@@ -1,35 +1,4 @@
-<?php  
-  include '../app/config/configLog.php';
-
-  error_reporting(0);
-  session_start();
-   
-  if (isset($_SESSION['username']) && isset($_SESSION['id_user']) && isset($_SESSION['name']) && isset($_SESSION['role']) ) {
-      header('Location:' . BASEURL . '/auth/login');
-  }
-   
-  if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $password = md5($_POST['password']);
-    $role = $_POST['role'];
-    $name = $_POST['name'];
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' AND role = '$role'";
-    $result = mysqli_query($conn, $sql);
-
-    if ($result->num_rows > 0) {
-          $row = mysqli_fetch_assoc($result);
-          $_SESSION['username'] = $row['username'];
-          $_SESSION['role'] = $row['role'];
-          $_SESSION['name'] = $row['name'];
-          header('Location:' . BASEURL . '/home');
-    } else {
-          echo "<script>
-                   alert('Username atau Password Salah. Silahkan Coba Lagi !')
-                </script>";
-    }
-  }
-?>
-
+<?php include '../app/helpers/login_helper.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,24 +11,31 @@
     <title><?= $data['title']; ?></title>
   </head>
   
-  <body class="text-center">
+  <body>
     <form action="" method="POST" class="form-signin">
       <div class="card">
         <div class="card-body">
-          <h1 class="h3 mb-3 font-weight-normal">MVC POS</h1>
+          <h1 class="h3 mb-3 font-weight-normal text-center title">SR - POS</h1>
+          <hr>
+          <div class="row">
+            <div class="col-sm">
+              <?php Flasher::flashLogin() ?>
+            </div>
+          </div>
 
             <label for="username" class="sr-only">Username</label>
-            <input type="text" id="username" name="username" class="form-control mb-2" placeholder="Username" autofocus />
+            <input type="text" id="username" name="username" class="form-control mb-2" placeholder="Username" value="<?= $username; ?>" autofocus autocomplete="off" required  />
 
             <label for="password" class="sr-only">Password</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
 
+            <label for="role" class="">User Level :</label>
             <select class="form-control mb-3" name="role" aria-label="Default select example">
               <option selected value="user">User</option>
               <option value="admin">Admin</option>
             </select>
-
-            <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" style="background-color: #4a6fdc">Login</button>
+          
+            <button class="btn btn-xs btn-primary form-control" type="submit" name="submit" style="background-color: #191E3A">Login</button>
         </div>
       </div>
     </form>
