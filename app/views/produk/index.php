@@ -113,8 +113,8 @@
           <div class="form-group">
             <label for="id_kategori">Kategori</label>
             <select id="id_kategori" name="id_kategori" class="form-control" required>
-              <?php foreach ($data['kategori'] as $kat): ?>
-                <option value="<?= $kat['id_kategori']; ?>"><?= $kat['kategori']; ?></option>
+              <?php foreach ($data['getKategori'] as $getKategori): ?>
+                <option value="<?= $getKategori['id_kategori']; ?>"><?= $getKategori['kategori']; ?></option>
               <?php endforeach; ?>
             </select>
           </div>

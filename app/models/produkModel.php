@@ -12,7 +12,8 @@
                     P.hargaJual, 
                     P.satuanBarang, 
                     P.stok, 
-                    P.tgl_input
+                    P.tgl_input,
+                    P.tgl_update
                 FROM produk AS P
                 JOIN kategori AS K
                 ON P.id_kategori = K.id_kategori';

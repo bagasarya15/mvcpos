@@ -1,13 +1,19 @@
 <?php 
     class User extends Controller {
         
+        public function __construct() {
+            if($_SESSION['role'] !== 'admin') {
+                header('Location:' . BASEURL . '/transaksi');
+            }
+        }
+        
         public function index() {
             $data = [
                 'title' => 'User',
                 'users' => $this->model('usersModel')->getAllUsers(),
             ];
             $this->view('template/header', $data);
-            $this->view('template/sidebar',$data);
+            $this->view('template/sidebar');
             $this->view('template/topbar');
             $this->view('user/index', $data);
             $this->view('template/footer');

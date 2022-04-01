@@ -14,7 +14,12 @@
 <!-- Akses Jika Role Admin  -->
       	<?php if ($_SESSION['role'] == 'admin') {?>
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Utama
+            </div>
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item <?= $data['title'] === 'Home' ? 'active' : '' ?>">
@@ -91,13 +96,21 @@
 
             <!-- Heading Setting-->
             <div class="sidebar-heading">
-                Setting
+                Pengaturan
             </div>
+
             <!-- Nav Item User -->
-            <li class="nav-item <?= $data['title'] === 'User' ? 'active' : '' ?>">
-                <a class="nav-link" href="<?= BASEURL; ?>/user">
-                    <i class="fas fa-users"></i>
-                    <span>User</span></a>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#setting" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <span>Kelola Akun</span>
+                </a>
+                <div id="setting" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= BASEURL; ?>/user">Data User</a>
+                        <a class="collapse-item" href="<?= BASEURL; ?>/kategori">Akun Saya</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->
@@ -111,21 +124,57 @@
         <?php }else { ?>
         <!-- Jika Akses Login User  -->            
             <hr class="sidebar-divider mt-1">
-            <!--List Transaksi Penjualan -->
             <div class="sidebar-heading">
-                Penjualan
+                Menu
             </div>
             
-            <li class="nav-item <?= $data['title'] === 'Transaksi Penjualan' ? 'active' : '' ?>">
-                <a class="nav-link" href="<?= BASEURL; ?>/transaksi">
+            <!--List Transaksi Penjualan -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#transaksi" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-shopping-cart"></i>
-                    <span>Transaksi Penjualan</span></a>
+                    <span>Transaksi</span>
+                </a>
+                <div id="transaksi" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= BASEURL; ?>/transaksi">Transaksi Penjualan</a>
+                        <a class="collapse-item" href="<?= BASEURL; ?>/transaksi/riwayatTransaksi">Riwayat Transaksi</a>
+                    </div>
+                </div>
             </li>
+            <!--List Transaksi Penjualan End-->
 
-            <li class="nav-item <?= $data['title'] === 'Riwayat Transaksi' ? 'active' : '' ?>">
-                <a class="nav-link" href="<?= BASEURL; ?>/transaksi/riwayatTransaksi">
+            <!-- Nav Item - Pages Collapse Menu Laporan-->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#laporan" aria-expanded="true" aria-controls="laporan">
                     <i class="fas fa-chart-pie"></i>
-                    <span>Riwayat Transaksi</span></a>
+                    <span>Laporan</span>
+                </a>
+                <div id="laporan" class="collapse" aria-labelledby="laporan" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="#">Laporan Penjualan</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Menu Laporan End -->
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <div class="sidebar-heading">
+                Pengaturan
+            </div>
+
+            <!-- Nav Item User -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#setting" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <span>Kelola Akun</span>
+                </a>
+                <div id="setting" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= BASEURL; ?>/auth/profile">Akun Saya</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->

@@ -11,7 +11,7 @@
             $data = [
                 'title' => 'Produk',
                 'produk' => $this->model('produkModel')->getJoinProduk(),
-                'kategori' => $this->model('kategoriModel')->getAllKategori()
+                'getKategori' => $this->model('kategoriModel')->getAllKategori()
             ];
 
             $this->view('template/header', $data);
@@ -35,6 +35,7 @@
                 'title' => 'Detail Produk',
                 'produk' => $this->model('produkModel')->getProdukById($id_produk),
             ];
+            
             $this->view('template/header', $data);
             $this->view('template/sidebar');
             $this->view('template/topbar');

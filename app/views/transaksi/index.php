@@ -4,6 +4,14 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-3 text-gray-800"><?= $data['title'] ?> </h1>
 
+<!-- Alert -->
+  <div class="row">
+    <div class="col-lg-6">
+      <?php Flasher::flash() ?>
+    </div>
+  </div>
+  <!-- End Alert -->
+
 <div class="row">
   <!-- Card Pencarian -->
   <div class="col-lg-4 my-1">
@@ -89,12 +97,14 @@
                             <input type="hidden" name="id_produk" value="<?= $keranjang['id_produk'];?>" class="form-control">
                             
                             <td><?= $no++; ?></td>
-                            <td><?= $keranjang['namaBarang'];  ?></td>
+                            <td><?= $keranjang['namaBarang']; ?></td>
                             <td><input type="number" class="form-control" name="jumlah" value="<?= $keranjang['jumlah'];?>"></td>
                             <td>Rp.<?= number_format($keranjang['total']);?>,-</td>
-                            <td><?= $_SESSION['username']; ?></td>
+                            <td><?= $_SESSION['name']; ?></td>
                             <td>
                                 <button type="submit" class="btn btn-sm btn-warning">Update</button>
+
+                                 <a href="<?= BASEURL; ?>/transaksi/hapus/<?= $keranjang['id_transaksi']; ?>" class="mb-1 btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini ?');"> Hapus </a>
                             </td>
                         </form>
                         </tr>
@@ -103,6 +113,23 @@
                 </table>
             </div>
             <hr></hr>
+
+            <!-- Perhitungan Untuk Input Ke Nota -->
+            <?php
+                $jumlah = $keranjang['jumlah'];
+                $total = $keranjang['total'];
+                $bayar = 50000 ;
+                $hitung = $bayar - $total  ;
+            ?>
+            <!-- Perhitungan End -->
+
+            <!-- Button Add Customer -->
+            <div class="d-flex justify-content-start mb-4 mt-2">
+                <button type="button" class="btn btn-primary btn-sm tambahCustomer" data-toggle="modal" data-target="#cusModal">
+                    Tambah Customer
+                </button>
+            </div>
+            <!-- End Button Trigger -->
             <form action="<?= BASEURL; ?>/transaksi/penjualan" method="POST">
                 <div class="form-row">
                     <div class="col-sm-6 mb-3">
@@ -125,7 +152,7 @@
                     </div>
                     <div class="col-sm-6 mb-3">
                         <label for="hitung">Kembali</label>
-                        <input type="text" class="form-control" id="hitung" name="hitung" value="<?= $hitung; ?>">
+                        <input type="text" class="form-control" id="hitung" name="hitung" value="Rp.<?= number_format($hitung); ?>.-" readonly>
                     </div>
                 </div>
                 <button class="btn btn-sm btn-success float-sm-right" type="submit"><i class="fa-solid fa-cart-shopping"></i> Bayar</button>
@@ -136,4 +163,41 @@
 <!-- End Card Kasir -->
 </div>
 <!-- /.container-fluid -->
+</div>
+
+
+
+<!-- Modal Add Customer -->
+<div class="modal fade" id="cusModal" tabindex="-2" aria-labelledby="formModalLabel" aria-hidden="true">
+  <div class="modal-dialog d-flex justify-content-center">
+    <div class="modal-content w-75">
+      <div class="modal-header">
+        <h5 class="modal-title" id="formModalLabel">Tambah Data Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="<?= BASEURL; ?>/transaksi/tambahCustomer" method="post">
+          <input type="hidden" name="id_customer" id="id_customer">
+          <div class="form-group">
+            <label for="namaCustomer">Nama Customer</label>
+            <input type="text" class="form-control" id="namaCustomer" name="namaCustomer" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="alamatCustomer">Alamat</label>
+            <textarea class="form-control" id="alamatCustomer" name="alamatCustomer" rows="3" autocomplete="off"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="tlpCustomer">Tlp</label>
+            <input type="number" class="form-control" id="tlpCustomer" name="tlpCustomer" autocomplete="off">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Tutup</button>
+        <button type="submit" class="btn btn-primary btn-sm">Tambah Data</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

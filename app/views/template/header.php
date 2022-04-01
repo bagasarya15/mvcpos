@@ -11,7 +11,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <!-- Title Head -->
     <title> SR-POS | <?= $data['title']; ?></title>
+    <link rel="icon" href="<?= BASEURL; ?>/img/app-store.png">
+    <!-- Title Head End -->
 
     <!-- Custom fonts for this template-->
     <link href="<?= BASEURL; ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

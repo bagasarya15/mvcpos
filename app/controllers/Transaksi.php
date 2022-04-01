@@ -15,6 +15,30 @@
             $this->view('template/footer');
         }
 
+        public function tambahCustomer() {
+             //Validasi Inputan
+             if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING, 'htmlspecialchars');
+                
+                $data = [
+                    'namaCustomer' => trim($_POST['namaCustomer']),
+                    'alamatCustomer' => trim($_POST['alamatCustomer']),
+                    'tlpCustomer' => trim($_POST['tlpCustomer']),
+                ];
+            }
+
+            if( $this->model('customerModel')-> tambahDataCustomer($_POST) > 0 ) {
+                Flasher::setFlash('Customer','Berhasil', 'Ditambahkan', 'success');
+                header('Location:' . BASEURL . '/transaksi');
+                exit;                
+            } else {
+                Flasher::setFlash('Customer','Gagal', 'Ditambahkan', 'danger');
+                header('Location:' . BASEURL . '/transaksi');
+                exit;        
+            }
+            $this->view('customer/index', $data);
+        }
+
         public function riwayatTransaksi() {
             $data = [
             'title' => 'Riwayat Transaksi',
