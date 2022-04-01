@@ -25,15 +25,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ingin Meninggalkan MVC POS ?</h5>
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">Ingin Meninggalkan SR POS ?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Tekan logout untuk mengakhiri sesi login</div>
+                <div class="modal-body text-dark">Tekan logout untuk mengakhiri sesi login</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?=BASEURL;?>/auth/logout">Logout</a>
+                    <button class="btn btn-xs btn-secondary light" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-xs btn-primary light" href="<?=BASEURL;?>/auth/logout"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout </a>
                 </div>
             </div>
         </div>
