@@ -108,7 +108,7 @@
                 <div id="setting" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?= BASEURL; ?>/user">Data User</a>
-                        <a class="collapse-item" href="<?= BASEURL; ?>/kategori">Akun Saya</a>
+                        <a class="collapse-item" href="<?= BASEURL; ?>/auth/profile">Akun Saya</a>
                     </div>
                 </div>
             </li>

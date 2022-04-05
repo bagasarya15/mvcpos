@@ -1,35 +1,27 @@
 <?php include '../app/helpers/add_user_helper.php'; ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
+  
+    <!-- Alert -->
+    <div class="row">
+      <div class="col-lg-6">
+        <?php Flasher::flash() ?>
+      </div>
+    </div>
+    <!-- End Alert -->
 
-<!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800"><?= $data['title'] ?> </h1>
-
-  <!-- Alert -->
-  <div class="row">
-    <div class="col-lg-6">
-      <?php Flasher::flash() ?>
+  <!-- Page Heading -->
+  <div class="card rounded my-4" style="max-width: 100%; height: 80px;">
+      <div class="card-body">
+        <a class="btn btn-sm text-dark font-weight-bold" readonly style="font-size: 120%;"><?= $data['title']; ?></a>
+        <button type="button" class="btn btn-sm btn-primary mr-2 mt-1 float-right" data-toggle="modal" data-target="#supModal"> <i class="fa fa-plus"></i> Tambah User </button>
+        <a href="<?= BASEURL; ?>/user" class="btn btn-sm btn-success mr-2 mt-1 float-right"><i class="fa-solid fa-rotate mr-1"></i> Refresh</a>
     </div>
   </div>
-  <!-- End Alert -->
-
-  <!-- Refresh Halaman -->
-  <div class="d-flex">
-    <a href="<?= BASEURL; ?>/user" class="btn btn-sm btn-success shadow-sm"><i class="fa-solid fa-rotate"></i> Refresh</a>
-  </div>
-  <!--Refresh Halaman -->
+  <!-- Page Heading End -->
   
-
-  <!-- Button trigger modal -->
-  <div class="d-flex justify-content-end my-2">
-    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#supModal">
-      Tambah <?= $data['title']; ?>
-    </button>
-  </div>
-  <!-- End Button Trigger -->
-
   <!-- Table -->
-  <div class="w-100">
+  <div class="w-100 mt-4">
     <div class="table-responsive">
       <table class="display responsive nowrap table text-center" width="100%" id="tablePos">
         <thead>
@@ -51,9 +43,9 @@
               <td><?= $users['role']; ?></td>
               <td>
                 <!-- Ubah Data -->
-              <a href="#" class="btn btn-sm btn-warning">Ubah</a>
+              <a href="#" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
                 <!-- Hapus Data -->
-                <a href="<?= BASEURL; ?>/user/hapus/<?= $users['id_user']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini ?');"> Hapus </a>
+                <a href="<?= BASEURL; ?>/user/hapus/<?= $users['id_user']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini ?');"> <i class="fa fa-trash"></i> </a>
               </td>
             </tr>
           <?php endforeach; ?>
@@ -71,14 +63,14 @@
   <div class="modal-dialog d-flex justify-content-center">
     <div class="modal-content w-75">
       <div class="modal-header">
-        <h5 class="modal-title" id="formModalLabel">Tambah Data <?= $data['title']; ?></h5>
+        <h5 class="modal-title" id="formModalLabel">Tambah Data User </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
-          <!-- <input type="hidden" name="id_user" id="id_user"> -->
+          <input type="hidden" name="id_user" id="id_user">
           <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" id="username" name="username" autocomplete="off" required>

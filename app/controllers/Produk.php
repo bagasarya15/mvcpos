@@ -11,13 +11,28 @@
             $data = [
                 'title' => 'Produk',
                 'produk' => $this->model('produkModel')->getJoinProduk(),
-                'getKategori' => $this->model('kategoriModel')->getAllKategori()
+                'getKategori' => $this->model('kategoriModel')->getAllKategori(),
             ];
 
             $this->view('template/header', $data);
             $this->view('template/sidebar');
             $this->view('template/topbar');
             $this->view('produk/index', $data);
+            $this->view('template/footer');
+        }
+
+        public function edit($id_produk) {
+            $data = [
+                'title' => 'Produk',
+                'produk' => $this->model('produkModel')->getJoinProduk(),
+                'getKategori' => $this->model('kategoriModel')->getAllKategori(),
+                'produk2' => $this->model('produkModel')->getProdukById($id_produk)
+            ];
+
+            $this->view('template/header', $data);
+            $this->view('template/sidebar');
+            $this->view('template/topbar');
+            $this->view('produk/edit', $data);
             $this->view('template/footer');
         }
 

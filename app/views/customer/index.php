@@ -1,8 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-  <!-- Page Heading -->
-  <h1 class="h3 mb-4 text-gray-800"><?= $data['title'] ?> </h1>
-  
+
   <!-- Alert -->
   <div class="row">
     <div class="col-lg-6">
@@ -11,19 +9,19 @@
   </div>
   <!-- End Alert -->
 
-  <!-- Reports -->
-  <div class="d-flex">
-    <a href="<?= BASEURL; ?>/customer/print" target="_blank" class="btn btn-sm btn-primary shadow-sm"><i class="fa-solid fa-download"></i> Cetak Data <?= $data['title']; ?></a>
-  </div>
-  <!-- End Reports -->
   
-  <!-- Button trigger modal -->
-  <div class="d-flex justify-content-end my-2">
-    <button type="button" class="btn btn-primary btn-sm tambahCustomer" data-toggle="modal" data-target="#cusModal">
-      Tambah <?= $data['title']; ?>
-    </button>
+  <!-- Page Heading -->
+  <div class="card rounded my-4" style="max-width: 100%; height: 80px;">
+      <div class="card-body">
+        <a class="btn btn-sm text-dark font-weight-bold" readonly style="font-size: 120%;"><?= $data['title']; ?></a>
+  
+        
+        <button type="button" class="btn btn-sm btn-primary mt-1 float-right tambahCustomer" data-toggle="modal" data-target="#cusModal"> <i class="fa fa-plus mr-1"></i> Tambah Customer </button>
+        
+        <a href="<?= BASEURL; ?>/customer/print" target="_blank" class="btn btn-sm btn-success shadow-sm float-right mt-1 mr-2"><i class="fa-solid fa-download mr-1"></i> Cetak Data <?= $data['title']; ?></a>
+    </div>
   </div>
-  <!-- End Button Trigger -->
+  <!-- Page Heading End -->
 
   <!-- Table -->
   <div class="w-100">

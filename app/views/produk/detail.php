@@ -1,7 +1,13 @@
-<!-- Page Heading -->
-<h1 class="h3 mb-4 mx-4 text-gray-800"><?= $data['title'] ?> </h1>
 <!-- Container -->
 <div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="card rounded my-4" style="max-width: 100%; height: 80px;">
+        <div class="card-body">
+            <a class="btn btn-sm text-dark font-weight-bold" readonly style="font-size: 120%;"><?= $data['title']; ?></a>
+            <a href="<?= BASEURL; ?>/produk" class="btn btn-sm btn-success mr-2 mt-1 float-right"><i class="fa fa-list mr-1"></i> Daftar Produk </a>
+        </div>
+    </div>
+    
     <div class="row">
         <div class="col-lg">
             <table class="table table-striped">
@@ -44,6 +50,5 @@
             </table>
         </div>
     </div>
-    <a href="<?= BASEURL;?>/produk" class="btn btn-sm btn-primary mx-1">Kembali</a>
 </div>
 <!-- End Container -->

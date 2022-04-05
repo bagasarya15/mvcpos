@@ -102,7 +102,8 @@ $(function () {
       dataType: 'json',
       success: function (data) {
         $('#kodeBarang').val(data.kodeBarang);
-        $('#id_kategori').val(data.id_kategori);
+        $('#id_kategori').val(data.kategori).attr('selected', true);
+        // $('#id_kategori option[value=' + data.kategori + ']').attr('selected', true);
         $('#namaBarang').val(data.namaBarang);
         $('#hargaBeli').val(data.hargaBeli);
         $('#hargaJual').val(data.hargaJual);
@@ -111,6 +112,7 @@ $(function () {
         $('#tgl_input').val(data.tgl_input);
         $('#tgl_update');
         $('#id_produk').val(data.id_produk);
+        // console.log(data);
       },
     });
   });

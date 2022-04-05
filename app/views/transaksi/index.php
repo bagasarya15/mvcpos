@@ -1,9 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-<!-- Page Heading -->
-<h1 class="h3 mb-3 text-gray-800"><?= $data['title'] ?> </h1>
-
 <!-- Alert -->
   <div class="row">
     <div class="col-lg-6">
@@ -11,6 +8,16 @@
     </div>
   </div>
   <!-- End Alert -->
+
+  <!-- Page Heading -->
+  <div class="card rounded my-4" style="max-width: 100%; height: 80px;">
+      <div class="card-body">
+        <a class="btn btn-sm text-dark font-weight-bold" readonly style="font-size: 120%;"><?= $data['title']; ?></a>
+
+        <a href="<?= BASEURL; ?>/transaksi" class="btn btn-sm btn-success mr-2 mt-1 float-right"><i class="fa-solid fa-rotate mr-1"></i> Refresh</a>
+    </div>
+  </div>
+  <!-- Page Heading End -->
 
 <div class="row">
   <!-- Card Pencarian -->

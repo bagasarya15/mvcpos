@@ -9,7 +9,7 @@
         
         public function index() {
             $data = [
-                'title' => 'User',
+                'title' => 'Kelola User',
                 'users' => $this->model('usersModel')->getAllUsers(),
             ];
             $this->view('template/header', $data);

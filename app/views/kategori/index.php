@@ -1,7 +1,5 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-  <!-- Page Heading -->
-  <h1 class="h3 mb-4 text-gray-800"><?= $data['title'] ?> </h1>
   
   <!-- Alert -->
   <div class="row">
@@ -10,14 +8,16 @@
     </div>
   </div>
   <!-- End Alert -->
+
+  <!-- Page Heading -->
+  <div class="card rounded my-4" style="max-width: 100%; height: 80px;">
+      <div class="card-body">
+        <a class="btn btn-sm text-dark font-weight-bold" readonly style="font-size: 120%;"><?= $data['title']; ?></a>
   
-  <!-- Button trigger modal -->
-  <div class="d-flex justify-content-end my-2">
-    <button type="button" class="btn btn-primary btn-sm tambahKategori" data-toggle="modal" data-target="#kategoriModal">
-      Tambah <?= $data['title']; ?>
-    </button>
+        <button type="button" class="btn btn-sm btn-primary mt-1 float-right" data-toggle="modal" data-target="#kategoriModal"> <i class="fa fa-plus"></i> Tambah Kategori </button>
+    </div>
   </div>
-  <!-- End Button Trigger -->
+  <!-- Page Heading End -->
 
   <!-- Table -->
   <div class="w-100">

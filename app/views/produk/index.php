@@ -1,8 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-  <!-- Page Heading -->
-  <h1 class="h3 mb-4 text-gray-800"><?= $data['title'] ?> </h1>
-  
+
   <!-- Alert -->
   <div class="row">
     <div class="col-lg-6">
@@ -10,23 +8,20 @@
     </div>
   </div>
   <!-- End Alert -->
-
-  <!-- Reports -->
-  <div class="d-flex">
-    <a href="<?= BASEURL; ?>/produk/print" target="_blank" class="btn btn-sm btn-primary shadow-sm"><i class="fa-solid fa-download"></i> Cetak Data <?= $data['title']; ?></a>
-    <!--  Refresh Halaman -->
-    <a href="<?= BASEURL; ?>/produk" class="btn btn-sm btn-success shadow-sm mx-2"><i class="fa-solid fa-rotate"></i> Refresh</a>
-  </div>
-  <!-- End Reports & Refresh Halaman -->
   
-  <!-- Button trigger modal -->
-  <div class="d-flex justify-content-end my-2">
-    <button type="button" class="btn btn-primary btn-sm tambahProduk" data-toggle="modal" data-target="#produkModal">
-      Tambah <?= $data['title']; ?>
-    </button>
+  <!-- Page Heading -->
+  <div class="card rounded my-4" style="max-width: 100%; height: 80px;">
+      <div class="card-body">
+        <a class="btn btn-sm text-dark font-weight-bold" readonly style="font-size: 120%;"><?= $data['title']; ?></a>
+  
+        
+        <button type="button" class="btn btn-sm btn-primary mt-1 float-right tambahProduk" data-toggle="modal" data-target="#produkModal"> <i class="fa fa-plus mr-1"></i> Tambah Produk </button>
+        
+        <a href="<?= BASEURL; ?>/produk/print" target="_blank" class="btn btn-sm btn-success shadow-sm float-right mt-1 mr-2"><i class="fa-solid fa-download mr-1"></i> Cetak Data <?= $data['title']; ?></a>
+    </div>
   </div>
-  <!-- End Button Trigger -->
-
+  <!-- Page Heading End -->
+  
   <!-- Table -->
   <div class="w-100">
     <div class="table-responsive">
@@ -58,11 +53,11 @@
               <td><?= $produk['satuanBarang']; ?></td>
               <td>
                 <!--Detail  -->
-                <a href="<?= BASEURL; ?>/produk/detail/<?= $produk['id_produk']; ?>" class="mb-1 btn btn-warning btn-sm">Detail</a>
+                <a href="<?= BASEURL; ?>/produk/detail/<?= $produk['id_produk']; ?>" class="mb-1 btn btn-warning btn-sm"><i class="fa fa-eye"></i></a>
                 <!-- Ubah Data -->
-                <a href="<?= BASEURL; ?>/produk/ubah/<?= $produk['id_produk']; ?>" class="mb-1 btn btn-success btn-sm modalUbahProduk" data-toggle="modal" data-target="#produkModal" data-id_produk="<?= $produk['id_produk']; ?>"> Ubah </a>
+                <a href="<?= BASEURL; ?>/produk/ubah/<?= $produk['id_produk']; ?>" class="mb-1 btn btn-success btn-sm modalUbahProduk" data-toggle="modal" data-target="#produkModal" data-id_produk="<?= $produk['id_produk']; ?>"><i class="fa fa-edit"></i></a>
                 <!-- Hapus Data -->
-                <a href="<?= BASEURL; ?>/produk/hapus/<?= $produk['id_produk']; ?>" class="mb-1 btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini ?');"> Hapus </a>
+                <a href="<?= BASEURL; ?>/produk/hapus/<?= $produk['id_produk']; ?>" class="mb-1 btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini ?');"> <i class="fa fa-trash"></i></a>
               </td>
             </tr>
             <!-- Perhitungan Produk -->
@@ -113,8 +108,8 @@
           <div class="form-group">
             <label for="id_kategori">Kategori</label>
             <select id="id_kategori" name="id_kategori" class="form-control" required>
-              <?php foreach ($data['getKategori'] as $getKategori): ?>
-                <option value="<?= $getKategori['id_kategori']; ?>"><?= $getKategori['kategori']; ?></option>
+              <?php foreach ($data['getKategori'] as $getKategori): ?>                
+                <option value="<?= $getKategori['kategori']; ?>"><?= $getKategori['kategori']; ?></option>
               <?php endforeach; ?>
             </select>
           </div>
